@@ -31,14 +31,19 @@
         <!-- /header -->
         
         <div data-role="content">
-            <div id='my-video' style="display:none;"></div>
-            <script type='text/javascript'> 
-                jwplayer('my-video').setup({ 
-                    file: 'http://87.233.180.73:8000/;*.nsv',
-                    type: 'mp3',
-                    autostart: false
-                });
-            </script>
+            <div  style="display:none;">
+                <div id='my-video'></div>
+                <script type='text/javascript'> 
+                    jwplayer('my-video').setup({ 
+                        file: 'http://87.233.180.73:8000/;*.nsv',
+                        type: 'mp3',
+                        width: '100%', 
+                        height: '30',
+                        autostart: false
+                    });
+                </script>
+                <!-- Free html5 Flash radio player generator by http://www.shoutcastireland.com -->
+            </div>
             <fieldset id="startstop" class="ui-grid-a">
                 <div class="ui-block-a">
                     <ul id="start" data-role="listview">
@@ -51,7 +56,6 @@
                     </ul>
                 </div>	   
             </fieldset>
-            <!-- Free html5 Flash radio player generator by http://www.shoutcastireland.com -->
             
         </div>
         <!-- content -->
