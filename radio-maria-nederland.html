@@ -31,7 +31,7 @@
         <!-- /header -->
         
         <div data-role="content">
-            <div  style="display:none;">
+            <div  styleDEBUG="display:none;">
                 <div id='my-video'></div>
                 <script type='text/javascript'> 
                     jwplayer('my-video').setup({ 
@@ -44,18 +44,19 @@
                 </script>
                 <!-- Free html5 Flash radio player generator by http://www.shoutcastireland.com -->
             </div>
-            <fieldset id="startstop" class="ui-grid-a">
-                <div class="ui-block-a">
-                    <ul id="start" data-role="listview">
-                        <li><a style="background:#68c456;color:white;"><span>aan</span></a></li>
-                    </ul>
-                </div>
-                <div class="ui-block-b">
-                    <ul id="stop" data-role="listview">
-                        <li><a style="background:#ff993f;color:white;"><span>uit</span></a></li>
-                    </ul>
-                </div>	   
-            </fieldset>
+        </div>
+        <fieldset id="startstop" class="ui-grid-a">
+            <div class="ui-block-a">
+                <ul id="start" data-role="listview">
+                    <li><a style="background:#68c456;color:white;"><span>aan</span></a></li>
+                </ul>
+            </div>
+            <div class="ui-block-b">
+                <ul id="stop" data-role="listview">
+                    <li><a style="background:#ff993f;color:white;"><span>uit</span></a></li>
+                </ul>
+            </div>	   
+        </fieldset>
             
         </div>
         <!-- content -->
