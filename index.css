@@ -1,0 +1,31 @@
+html, body { background-color: #FFFFFF !important;}
+
+@media only screen and (min-width: 550px) {
+    .ui-page {
+        width: 550px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+    }
+    .ui-header-fixed, .ui-footer-fixed {
+        width: 550px !important;
+        margin: 0 auto !important;
+    }
+    .ui-btn {
+        margin-right: 0px !important;
+    }
+    .fullwidthimage  {
+        max-width:550px;
+        display: block;
+    }
+}
+
+.ui-title {
+    margin: 0.6em 10% 0.8em 5% !important;
+}
+
+.dialog {
+    padding: 20px;
+    text-align: center;
+    color: #68c456;
+    font-weight: bold;
+}

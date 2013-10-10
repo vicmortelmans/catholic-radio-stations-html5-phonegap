@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="net.credomobiel.katholiekeradio" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Katholieke Radio</name>
+    <description>
+        Luister naar katholieke Radio.
+    </description>
+    <author email="info@credomobiel.net" href="http://credomobiel.net">
+        Credomobiel
+    </author>
+    <gap:platform name="android" />
+    <gap:splash src="splash.png" width="320" height="480" />
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <icon src="favicon.png" />
+    <icon src="favicon36.png" gap:platform="android" gap:density="ldpi" />
+    <icon src="favicon.png" gap:platform="android" gap:density="mdpi" />
+    <icon src="favicon72.png" gap:platform="android" gap:density="hdpi" />
+    <icon src="favicon96.png" gap:platform="android" gap:density="xhdpi" />
+    <access origin="http://127.0.0.1*" />
+</widget>
