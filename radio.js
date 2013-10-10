@@ -1,15 +1,3 @@
-$(document).ready(function(){
-    $('#start').on('click',function(){
-        jwplayer('my-video').play(true);
-    });
-    $('#stop').on('click',function(){
-        jwplayer('my-video').pause(true);
-    });
-    $('div').on('pagebeforehide',function(){
-        jwplayer('my-video').stop();
-    });
-});
-
 
 
 /*

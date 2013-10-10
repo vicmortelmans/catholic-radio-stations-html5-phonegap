@@ -10,21 +10,16 @@
         <link rel="apple-touch-icon-precomposed" href="favicon114.png" />
         <link rel="stylesheet" href="index.css"/>
         <script src="jquery-1.9.1.min.js"></script>
-        <!-- script for shoutcast radio stations -->
-        <script type="text/javascript" src="http://www.shoutcastireland.com/jwplayer.js"></script>
         <script src="radio.js"></script>
         <script src="jquery.mobile-1.3.2.min.js"></script>
         <script src="phonegap.js"></script>
         <script>
             $(document).ready(function(){
                 $('#start').on('click',function(){
-                    jwplayer('my-video').play(true);
+                    $('#my-player').get(0).play();
                 });
                 $('#stop').on('click',function(){
-                    jwplayer('my-video').pause(true);
-                });
-                $('div').on('pagebeforehide',function(){
-                    jwplayer('my-video').stop();
+                    $('#my-player').get(0).pause();
                 });
             });
         </script>
@@ -39,22 +34,15 @@
         
         <div data-role="header">
             <a data-rel="back" data-icon="back">terug</a>
-            <h1>Radio Maria Nederland</h1>
+            <h1>Radio Maria Vlaanderen</h1>
         </div>
         <!-- /header -->
         
         <div style="display:none;">
-            <div id='my-video'></div>
-            <script type='text/javascript'> 
-                jwplayer('my-video').setup({ 
-                    file: 'http://87.233.180.73:8000/;*.nsv',
-                    type: 'mp3',
-                    width: '100%', 
-                    height: '30',
-                    autostart: false
-                });
-            </script>
-            <!-- Free html5 Flash radio player generator by http://www.shoutcastireland.com -->
+            <audio controls width="100%" id="my-player">
+                <source src="http://stream.radiomaria.be:8000/RadioMaria-32" type="audio/mpeg">
+                <embed width="100%" src="http://stream.radiomaria.be:8000/RadioMaria-32">
+            </audio>
         </div>
         <fieldset id="startstop" class="ui-grid-a">
             <div class="ui-block-a">
