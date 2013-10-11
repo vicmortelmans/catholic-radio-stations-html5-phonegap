@@ -6,7 +6,7 @@ $(document).ready(function(){
     getijdenroosterladen.done(function(d){
         $.each(d.value.items,function(i,tr){
             var td = tr.td;
-            if ($.trim(td[2])) {
+            if ($.trim(td[2]) != '') {
                 var getijde = {};
                 getijde.naam = $.trim(td[2].p);
                 getijde.start = $.trim(td[4].p.substr(0, td[4].p.indexOf('~')));
