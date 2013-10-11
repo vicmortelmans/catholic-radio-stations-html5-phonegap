@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"> 
+        <title>Mechelse Catechismus</title> 
+        <link rel="stylesheet" href="jquery.mobile.theme-1.3.2.min.css" />
+        <link rel="stylesheet" href="jquery.mobile.structure-1.3.2.min.css" />
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="apple-touch-icon-precomposed" href="favicon114.png" />
+        <link rel="stylesheet" href="index.css"/>
+        <script src="jquery-1.9.1.min.js"></script>
+        <script src="radio.js"></script>
+        <script src="jquery.mobile-1.3.2.min.js"></script>
+        <script src="phonegap.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#start').on('click',function(){
+                    $('#my-player').get(0).play();
+                });
+                $('#stop').on('click',function(){
+                    $('#my-player').get(0).pause();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        
+    <!--
+        RADIO MARIA VLAANDEREN
+        -->
+    
+    <div data-role="page">
+        
+        <div data-role="header">
+            <a data-rel="back" data-icon="back">terug</a>
+            <h1>Radio Maria Vlaanderen</h1>
+        </div>
+        <!-- /header -->
+        
+        <div style="display:none;">
+            <audio controls width="100%" id="my-player">
+                <source src="http://stream.radiomaria.be:8000/RadioMaria-32" type="audio/mpeg">
+                <embed width="100%" src="http://stream.radiomaria.be:8000/RadioMaria-32">
+            </audio>
+        </div>
+        <img class="fullwidthimage" src="xx.png"/>
+        <fieldset id="startstop" class="ui-grid-a">
+            <div class="ui-block-a">
+                <ul id="start" data-role="listview">
+                    <li><a style="background:#68c456;color:white;"><span>aan</span></a></li>
+                </ul>
+            </div>
+            <div class="ui-block-b">
+                <ul id="stop" data-role="listview">
+                    <li><a style="background:#ff993f;color:white;"><span>uit</span></a></li>
+                </ul>
+            </div>	   
+        </fieldset>
+                    
+    </div>
+    <!-- /page -->
+    
+    <script type="text/javascript">
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-37079052-1']);
+     _gaq.push(['_trackPageview']);
+    
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+    </script>
+    
+    </body>
+</html>
