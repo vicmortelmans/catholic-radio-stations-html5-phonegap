@@ -31,4 +31,5 @@
     <icon src="favicon72.png" gap:platform="android" gap:density="hdpi" />
     <icon src="favicon96.png" gap:platform="android" gap:density="xhdpi" />
     <access origin="http://127.0.0.1*" />
+    <access origin="*" />
 </widget>
