@@ -1,5 +1,6 @@
+var getijdenrooster = [];
+
 $(document).ready(function(){
-    var getijdenrooster = [];
     var getijdenroosterurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=65561586a6f6bf908b7a91e02d0e6f33&_render=json&_callback=?";
     var getijdenroosterladen = $.getJSON(getijdenroosterurl);
     getijdenroosterladen.done(function(d){
