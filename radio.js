@@ -6,12 +6,11 @@ $(document).ready(function(){
     getijdenroosterladen.done(function(d){
         $.each(d.value.items,function(i,tr){
             var td = tr.td;
-            if (td[2]) {
+            if ($.trim(td[2])) {
                 var getijde = {};
-                getijde.naam = td[2].p;
-                getijde.start = td[4].p.substr(0, td[4].p.indexOf('~'));
-                getijde.stop = td[4].p.substr(td[4].p.indexOf('~') + 1,td[4].p.length - 1);
-                getijde.herhaling = (td[2].class == 'repeterend');
+                getijde.naam = $.trim(td[2].p);
+                getijde.start = $.trim(td[4].p.substr(0, td[4].p.indexOf('~')));
+                getijde.stop = $.trim(td[4].p.substr(td[4].p.indexOf('~') + 1,td[4].p.length - 1));
                 getijdenrooster.push(getijde);
             }
         });
