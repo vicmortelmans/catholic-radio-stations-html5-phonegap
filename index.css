@@ -34,7 +34,7 @@ html, body { background-color: #FFFFFF !important;}
     color: #68c456;
     font-weight: bold;
 }
-
+/*
 .hiding {
     position: relative;
     overflow: hidden;
@@ -43,4 +43,4 @@ html, body { background-color: #FFFFFF !important;}
 .hidden {
     position: absolute;
     left: 550px;
-}
+}*/
