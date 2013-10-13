@@ -35,7 +35,7 @@ $(document).ready(function(){
         });
     });
     jwplayer('radio-maria-nederland-player').onReady();
-    $('#
+    $('# 
         $('#radio-maria-nederland').parent().removeClass('notready');
         return;
     radio-maria-vlaanderen-player').on('canplay',function(){
