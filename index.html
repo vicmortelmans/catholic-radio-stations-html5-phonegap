@@ -26,7 +26,7 @@
             
             <div data-role="content">
                 
-                <ul data-role="listview" id="sets">
+                <ul data-role="listview" id="sets" data-icon="false">
                     <li>
                         <a id="radio-maria-nederland"><img src="radiomaria.jpg" />Radio Maria Nederland</a>
                     </li>
@@ -35,6 +35,9 @@
                     </li>
                     <li>
                         <a id="getijden"><img src="getijden.jpg" />Getijden</a>
+                    </li>
+                    <li>
+                        <a id="gregoriaans"><img src="concertzender.png" />Gregoriaans</a>
                     </li>
                 </ul>
             </div>
@@ -63,6 +66,12 @@
                     <source src="http://streamcluster02.true.nl/mediapastoraat" type="audio/mpeg">
                     <embed width="100%" src="http://streamcluster02.true.nl/mediapastoraat">
                 </audio>
+                
+                <audio controls width="100%" id="gregoriaans-player">
+                    <source src="http://streams.greenhost.nl:8080/gregoriaans" type="audio/mpeg">
+                    <embed width="100%" src="http://streams.greenhost.nl:8080/gregoriaans">
+                </audio>
+        
             </div>
         </div>
        
