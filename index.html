@@ -40,27 +40,31 @@
             </div>
         </div><!-- /page -->
 
-        <div id='radio-maria-nederland-player'></div>
-        <script type='text/javascript'> 
-          jwplayer('radio-maria-nederland-player').setup({ 
-              file: 'http://87.233.180.73:8000/;*.nsv',
-              type: 'mp3',
-              width: '100%', 
-              height: '30',
-              autostart: false
-          });
-        </script>
-        <!-- Free html5 Flash radio player generator by http://www.shoutcastireland.com -->
-
-        <audio controls width="100%" id="radio-maria-vlaanderen-player">
-            <source src="http://stream.radiomaria.be:8000/RadioMaria-32" type="audio/mpeg">
-            <embed width="100%" src="http://stream.radiomaria.be:8000/RadioMaria-32">
-        </audio>
-
-        <audio controls width="100%" id="getijden-player">
-            <source src="http://streamcluster02.true.nl/mediapastoraat" type="audio/mpeg">
-            <embed width="100%" src="http://streamcluster02.true.nl/mediapastoraat">
-        </audio>
+        <div class="hiding">
+            <div class="hidden">
+                <div id='radio-maria-nederland-player'></div>
+                <script type='text/javascript'> 
+                  jwplayer('radio-maria-nederland-player').setup({ 
+                      file: 'http://87.233.180.73:8000/;*.nsv',
+                      type: 'mp3',
+                      width: '100%', 
+                      height: '30',
+                      autostart: false
+                  });
+                </script>
+                <!-- Free html5 Flash radio player generator by http://www.shoutcastireland.com -->
+        
+                <audio controls width="100%" id="radio-maria-vlaanderen-player">
+                    <source src="http://stream.radiomaria.be:8000/RadioMaria-32" type="audio/mpeg">
+                    <embed width="100%" src="http://stream.radiomaria.be:8000/RadioMaria-32">
+                </audio>
+        
+                <audio controls width="100%" id="getijden-player">
+                    <source src="http://streamcluster02.true.nl/mediapastoraat" type="audio/mpeg">
+                    <embed width="100%" src="http://streamcluster02.true.nl/mediapastoraat">
+                </audio>
+            </div>
+        </div>
        
     </body>
 </html>
