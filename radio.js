@@ -17,7 +17,31 @@ $(document).ready(function(){
             }
             catch (e) {}
         });
-    })
+    });
+    $('#radio-maria-nederland').on('click',function(){
+        jwplayer('radio-maria-nederland-player').play();
+        return;
+    });
+    $('#radio-maria-vlaanderen').on('click',function(){
+        var player = $('#radio-maria-vlaanderen-player').get(0);
+        if (player.paused) 
+            player.play();
+        else
+            player.pause();
+        return;
+    });
+    $('#getijden').on('click',function(){
+        var player = $('#radio-maria-vlaanderen-player').get(0);
+        if (player.paused) 
+            player.play();
+        else
+            player.pause();
+        return;
+    });
+    $('div').on('pagebeforehide',function(){
+        jwplayer('radio-maria-nederland-player').stop();
+        return;
+    });
 });
 
 /*
