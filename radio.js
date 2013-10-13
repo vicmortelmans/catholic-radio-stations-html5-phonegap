@@ -34,15 +34,15 @@ $(document).ready(function(){
             catch (e) {}
         });
     });
-    jwplayer('radio-maria-nederland-player').onReady();
+        jwplayer('radio-maria-nederland-player').onReady();
     $('# 
-        $('#radio-maria-nederland').parent().removeClass('notready');
-        return;
-    radio-maria-vlaanderen-player').on('canplay',function(){
-        $('#radio-maria-vlaanderen').parent().removeClass('notready');
-        return;
+            $('#radio-maria-nederland').parent().removeClass('notready');
+            return;
+        radi    o-maria-vlaanderen-player').on('canplay',function(){
+        $('#    radio-maria-vlaanderen').parent().removeClass('notready');
+        retu    rn;
     });
-    $('#getijden-player').on('canplay',function(){
+        $('#getijden-player').on('canplay',function(){
         $('#getijden').parent().removeClass('notready');
         return;
     });
