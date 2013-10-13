@@ -31,7 +31,7 @@ html, body { background-color: #FFFFFF !important;}
   border-right: 15px solid #68c456;
 }
 .notready {
-  border-right: 15px solid #ff993f;
+  border-right: 15px solid #ff0000;
 }
 .hiding {
     position: relative;

@@ -16,24 +16,16 @@ function stopall() {
     jwplayer('radio-maria-nederland-player').pause(true);
 }
 
-$(document).ready(function(){
-    var getijdenroosterurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=65561586a6f6bf908b7a91e02d0e6f33&_render=json&_callback=?";
-    var getijdenroosterladen = $.getJSON(getijdenroosterurl);
-    getijdenroosterladen.done(function(d){
-        $.each(d.value.items,function(i,tr){
-            var td = tr.td;
-            try {
-                if ($.trim(td[2].p) != '') {
-                    var getijde = {};
-                    getijde.naam = $.trim(td[2].p);
-                    getijde.start = $.trim(td[4].p.substr(0, td[4].p.indexOf('~')));
-                    getijde.stop = $.trim(td[4].p.substr(td[4].p.indexOf('~') + 1,td[4].p.length - 1));
-                    getijdenrooster.push(getijde);
-                }
-            }
-            catch (e) {}
-        });
+function getijdenstatus() {
+    var getijdenstatusurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=fd4429e792f74e446ea153b4efadc663&_render=json&_callback=?";
+    var getijdenstatusladen = $.getJSON(getijdenstatusurl);
+    getijdenstatusladen.done(function(d){
+        $('#getijdenstatus').text(d.value.items[0].content);
     });
+    setTimeout(getijdenstatus,60000);
+}
+
+$(document).ready(function(){
     jwplayer('radio-maria-nederland-player').onReady(function(){ 
         $('#radio-maria-nederland').closest('li').removeClass('notready');
         return;
@@ -51,7 +43,9 @@ $(document).ready(function(){
         return;
     });
     $('#radio-maria-nederland').on('click',function(){
-        if ($(this).closest('li').hasClass('playing')) {
+        if ($(this).closest('li').hasClass('notready')) {
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
@@ -61,7 +55,9 @@ $(document).ready(function(){
         return;
     });
     $('#radio-maria-vlaanderen').on('click',function(){
-        if ($(this).closest('li').hasClass('playing')) {
+        if ($(this).closest('li').hasClass('notready')) {
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
@@ -71,7 +67,9 @@ $(document).ready(function(){
         return;
     });
     $('#getijden').on('click',function(){
-        if ($(this).closest('li').hasClass('playing')) {
+        if ($(this).closest('li').hasClass('notready')) {
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
@@ -81,7 +79,9 @@ $(document).ready(function(){
         return;
     });
     $('#gregoriaans').on('click',function(){
-        if ($(this).closest('li').hasClass('playing')) {
+        if ($(this).closest('li').hasClass('notready')) {
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
@@ -94,6 +94,7 @@ $(document).ready(function(){
         stopall();
         return;
     });
+    getijdenstatus();
 });
 
 /*
