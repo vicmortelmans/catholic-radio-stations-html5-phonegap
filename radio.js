@@ -13,7 +13,7 @@ function stopall() {
     $('#radio-maria-vlaanderen-player').get(0).pause();
     $('#getijden-player').get(0).pause();
     $('#gregoriaans-player').get(0).pause();
-    jwplayer('radio-maria-nederland-player').pause(true);
+    jwplayer('radio-maria-nederland-player').stop();
 }
 
 function getijdenstatus() {
@@ -88,6 +88,22 @@ $(document).ready(function(){
             $('#gregoriaans-player').get(0).play();
             $(this).closest('li').addClass('playing');
         }
+        return;
+    });
+    jwplayer('radio-maria-nederland-player').onError(function(){ 
+        $('#radio-maria-nederland').closest('li').addClass('notready');
+        return;
+    });
+    $('#radio-maria-vlaanderen-player').on('stalled',function(){
+        $('#radio-maria-vlaanderen').closest('li').addClass('notready');
+        return;
+    });
+    $('#getijden-player').on('stalled',function(){
+        $('#getijden').closest('li').addClass('notready');
+        return;
+    });
+    $('#gregoriaans-player').on('stalled',function(){
+        $('#gregoriaans').closest('li').addClass('notready');
         return;
     });
     $('div').on('pagebeforehide',function(){
