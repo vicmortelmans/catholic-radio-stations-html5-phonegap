@@ -34,6 +34,22 @@ $(document).ready(function(){
             catch (e) {}
         });
     });
+    jwplayer('radio-maria-nederland-player').onReady();
+    $('#
+        $('#radio-maria-nederland').parent().removeClass('notready');
+        return;
+    radio-maria-vlaanderen-player').on('canplay',function(){
+        $('#radio-maria-vlaanderen').parent().removeClass('notready');
+        return;
+    });
+    $('#getijden-player').on('canplay',function(){
+        $('#getijden').parent().removeClass('notready');
+        return;
+    });
+    $('#gregoriaans-player').on('canplay',function(){
+        $('#gregoriaans').parent().removeClass('notready');
+        return;
+    });
     $('#radio-maria-nederland').on('click',function(){
         if ($(this).parent().hasClass('playing')) {
             stopall();
@@ -75,7 +91,7 @@ $(document).ready(function(){
         return;
     });
     $('div').on('pagebeforehide',function(){
-        jwplayer('radio-maria-nederland-player').stop();
+        stopall();
         return;
     });
 });
