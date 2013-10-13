@@ -35,58 +35,58 @@ $(document).ready(function(){
         });
     });
     jwplayer('radio-maria-nederland-player').onReady(function(){ 
-        $('#radio-maria-nederland').parent().removeClass('notready');
+        $('#radio-maria-nederland').closest('li').removeClass('notready');
         return;
     });
     $('#radio-maria-vlaanderen-player').on('canplay',function(){
-        $('#radio-maria-vlaanderen').parent().removeClass('notready');
+        $('#radio-maria-vlaanderen').closest('li').removeClass('notready');
         return;
     });
     $('#getijden-player').on('canplay',function(){
-        $('#getijden').parent().removeClass('notready');
+        $('#getijden').closest('li').removeClass('notready');
         return;
     });
     $('#gregoriaans-player').on('canplay',function(){
-        $('#gregoriaans').parent().removeClass('notready');
+        $('#gregoriaans').closest('li').removeClass('notready');
         return;
     });
     $('#radio-maria-nederland').on('click',function(){
-        if ($(this).parent().hasClass('playing')) {
+        if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
             jwplayer('radio-maria-nederland-player').play(true);
-            $(this).parent().addClass('playing');
+            $(this).closest('li').addClass('playing');
         }
         return;
     });
     $('#radio-maria-vlaanderen').on('click',function(){
-        if ($(this).parent().hasClass('playing')) {
+        if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
             $('#radio-maria-vlaanderen-player').get(0).play();
-            $(this).parent().addClass('playing');
+            $(this).closest('li').addClass('playing');
         }
         return;
     });
     $('#getijden').on('click',function(){
-        if ($(this).parent().hasClass('playing')) {
+        if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
             $('#getijden-player').get(0).play();
-            $(this).parent().addClass('playing');
+            $(this).closest('li').addClass('playing');
         }
         return;
     });
     $('#gregoriaans').on('click',function(){
-        if ($(this).parent().hasClass('playing')) {
+        if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
             $('#gregoriaans-player').get(0).play();
-            $(this).parent().addClass('playing');
+            $(this).closest('li').addClass('playing');
         }
         return;
     });
