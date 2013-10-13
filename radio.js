@@ -6,15 +6,42 @@ $(document).ready(function(){
     getijdenroosterladen.done(function(d){
         $.each(d.value.items,function(i,tr){
             var td = tr.td;
-            if ($.trim(td[2].p) != '') {
-                var getijde = {};
-                getijde.naam = $.trim(td[2].p);
-                getijde.start = $.trim(td[4].p.substr(0, td[4].p.indexOf('~')));
-                getijde.stop = $.trim(td[4].p.substr(td[4].p.indexOf('~') + 1,td[4].p.length - 1));
-                getijdenrooster.push(getijde);
+            try {
+                if ($.trim(td[2].p) != '') {
+                    var getijde = {};
+                    getijde.naam = $.trim(td[2].p);
+                    getijde.start = $.trim(td[4].p.substr(0, td[4].p.indexOf('~')));
+                    getijde.stop = $.trim(td[4].p.substr(td[4].p.indexOf('~') + 1,td[4].p.length - 1));
+                    getijdenrooster.push(getijde);
+                }
             }
+            catch (e) {}
         });
-    })
+    });
+    $('#radio-maria-nederland').on('click',function(){
+        jwplayer('radio-maria-nederland-player').play();
+        return;
+    });
+    $('#radio-maria-vlaanderen').on('click',function(){
+        var player = $('#radio-maria-vlaanderen-player').get(0);
+        if (player.paused) 
+            player.play();
+        else
+            player.pause();
+        return;
+    });
+    $('#getijden').on('click',function(){
+        var player = $('#radio-maria-vlaanderen-player').get(0);
+        if (player.paused) 
+            player.play();
+        else
+            player.pause();
+        return;
+    });
+    $('div').on('pagebeforehide',function(){
+        jwplayer('radio-maria-nederland-player').stop();
+        return;
+    });
 });
 
 /*
