@@ -51,15 +51,15 @@ function barrouxstatus() {
         if (nowtime < 600) {
             status = "De lauden starten om 6:00u";
         } else if (nowtime < 745) {
-            status = "De priem starten om 7:45u of 8:00u (zondag)";
+            status = "Aanvang Priem rond 7:45u of 8:00u (zondag)";
         } else if (nowtime < 1215) {
-            status = "De sext start om 12:15u";
+            status = "Aanvang Sext rond 12:15u";
         } else if (nowtime < 1415) {
-            status = "De noon start om 14:15u of 14:30u (zondag)";
+            status = "Aanving Noon rond 14:15u of 14:30u (zondag)";
         } else if (nowtime < 1830) {
-            status = "De vespers starten om 18:30u";
+            status = "Aanvang Vespers rond 18:30u";
         } else if (nowtime < 1945) {
-            status = "De completen starten om 19:45u";
+            status = "Aanvang Completen rond 19:45u";
         } else {
             status = "Er zijn vandaag geen uitzendingen meer";
         }
