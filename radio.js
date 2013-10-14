@@ -23,6 +23,9 @@ function getijdenstatus() {
     getijdenstatusladen.done(function(d){
         $('#getijdenstatus').text(d.value.items[0].content);
     });
+    if ($('#getijden').closest('li').hasClass('notready')) {
+        $('#getijden-player').get(0).load();
+    }
     setTimeout(getijdenstatus,60000);
 }
 
@@ -62,12 +65,17 @@ function barrouxstatus() {
         }
     }
     $('#barrouxstatus').text(status);
+    if ($('#barroux').closest('li').hasClass('notready')) {
+        $('#barroux-player').get(0).load();
+    }
     setTimeout(barrouxstatus,60000);
 }
 
 $(document).ready(function(){
-    jwplayer('radio-maria-nederland-player').onIdle(function(){ 
-        $('#radio-maria-nederland').closest('li').removeClass('notready');
+    jwplayer('radio-maria-nederland-player').onReady(function(){
+        if (jwplayer('radio-maria-nederland-player').getState == 'IDLE') {
+            $('#radio-maria-nederland').closest('li').removeClass('notready');
+        }
         return;
     });
     $('#radio-maria-vlaanderen-player').on('canplay',function(){
@@ -171,6 +179,7 @@ $(document).ready(function(){
         return;
     });
     getijdenstatus();
+    barrouxstatus();
 });
 
 /*
