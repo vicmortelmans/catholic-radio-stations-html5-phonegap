@@ -10,10 +10,10 @@ function toggleplay(audio) {
 
 function stopall() {
     $('.playing').removeClass('playing');
-    $('#radio-maria-vlaanderen-player').get(0).pause();
-    $('#getijden-player').get(0).pause();
-    $('#barroux-player').get(0).pause();
-    $('#gregoriaans-player').get(0).pause();
+    $('#radio-maria-vlaanderen-player').get(0).stop();
+    $('#getijden-player').get(0).stop();
+    $('#barroux-player').get(0).stop();
+    $('#gregoriaans-player').get(0).stop();
     jwplayer('radio-maria-nederland-player').stop();
 }
 
@@ -35,31 +35,31 @@ function barrouxstatus() {
     var status;
     if ($('#barroux').closest('li').hasClass('playing')) {
         if (nowtime >= 1945) {
-            status = "De completen zijn gestart om 19:45u";
+            status = "De completen zijn gestart om 19:45";
         } else if (nowtime >= 1830) {
-            status = "De vespers zijn gestart om 18:30u";
+            status = "De vespers zijn gestart om 18:30";
         } else if (nowtime >= 1415) {
-            status = "De noon is gestart om 14:15u of 14:30u (zondag)";
+            status = "De noon is gestart om 14:15 of 14:30 (zondag)";
         } else if (nowtime >= 1215) {
-            status = "De sext is gestart om 12:15u";
+            status = "De sext is gestart om 12:15";
         } else if (nowtime >= 745) {
-            status = "De priem is gestart om 7:45u of 8:00u (zondag)";
+            status = "De priem is gestart om 7:45 of 8:00 (zondag)";
         } else if (nowtime >= 600) {
-            status = "De lauden zijn gestart om 6:00u";
+            status = "De lauden zijn gestart om 6:00";
         }
     } else {
         if (nowtime < 600) {
-            status = "De lauden starten om 6:00u";
+            status = "De lauden starten om 6:00";
         } else if (nowtime < 745) {
-            status = "Aanvang Priem rond 7:45u of 8:00u (zondag)";
+            status = "Aanvang Priem rond 7:45 of 8:00 (zondag)";
         } else if (nowtime < 1215) {
-            status = "Aanvang Sext rond 12:15u";
+            status = "Aanvang Sext rond 12:15";
         } else if (nowtime < 1415) {
-            status = "Aanving Noon rond 14:15u of 14:30u (zondag)";
+            status = "Aanving Noon rond 14:15 of 14:30 (zondag)";
         } else if (nowtime < 1830) {
-            status = "Aanvang Vespers rond 18:30u";
+            status = "Aanvang Vespers rond 18:30";
         } else if (nowtime < 1945) {
-            status = "Aanvang Completen rond 19:45u";
+            status = "Aanvang Completen rond 19:45";
         } else {
             status = "Er zijn vandaag geen uitzendingen meer";
         }
