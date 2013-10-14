@@ -8,14 +8,30 @@ function toggleplay(audio) {
     return;
 }    
 
+function stop(playerid) {
+    var player = $('#' + playerid).get(0);
+    player.realsrc = player.src;
+    player.src = '';
+    player.load();
+    return;
+}
+
 function stopall() {
     $('.playing').removeClass('playing');
-    $('#radio-maria-vlaanderen-player').get(0).src = '';
-    $('#radio-maria-vlaanderen-player').get(0).load();
-    $('#getijden-player').get(0).pause();
-    $('#barroux-player').get(0).pause();
-    $('#gregoriaans-player').get(0).pause();
+    stop('radio-maria-vlaanderen-player');
+    stop('getijden-player');
+    stop('barroux-player');
+    stop('gregoriaans-player');
     jwplayer('radio-maria-nederland-player').stop();
+    return;
+}
+
+function start(playerid) {
+    var player = $('#' + playerid).get(0);
+    player.src = player.realsrc;
+    player.load();
+    player.play();
+    return;    
 }
 
 function getijdenstatus() {
@@ -114,9 +130,7 @@ $(document).ready(function(){
             stopall();
         } else {
             stopall();
-            $('#radio-maria-vlaanderen-player').get(0).src = 'http://stream.radiomaria.be:8000/RadioMaria-32';
-            $('#radio-maria-vlaanderen-player').get(0).load();
-            $('#radio-maria-vlaanderen-player').get(0).play();
+            start('radio-maria-vlaanderen-player');
             $(this).closest('li').addClass('playing');
         }
         return;
@@ -128,7 +142,7 @@ $(document).ready(function(){
             stopall();
         } else {
             stopall();
-            $('#getijden-player').get(0).play();
+            start('getijden-player');
             $(this).closest('li').addClass('playing');
         }
         return;
@@ -140,7 +154,7 @@ $(document).ready(function(){
             stopall();
         } else {
             stopall();
-            $('#barroux-player').get(0).play();
+            start('barroux-player');
             $(this).closest('li').addClass('playing');
         }
         return;
@@ -152,7 +166,7 @@ $(document).ready(function(){
             stopall();
         } else {
             stopall();
-            $('#gregoriaans-player').get(0).play();
+            start('gregoriaans-player');
             $(this).closest('li').addClass('playing');
         }
         return;
