@@ -73,7 +73,7 @@ function barrouxstatus() {
 
 $(document).ready(function(){
     jwplayer('radio-maria-nederland-player').onReady(function(){
-        if (jwplayer('radio-maria-nederland-player').getState == 'IDLE') {
+        if (jwplayer('radio-maria-nederland-player').getState() == 'IDLE') {
             $('#radio-maria-nederland').closest('li').removeClass('notready');
         }
         return;
