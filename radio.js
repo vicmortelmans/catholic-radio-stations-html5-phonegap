@@ -10,10 +10,11 @@ function toggleplay(audio) {
 
 function stopall() {
     $('.playing').removeClass('playing');
-    $('#radio-maria-vlaanderen-player').get(0).stop();
-    $('#getijden-player').get(0).stop();
-    $('#barroux-player').get(0).stop();
-    $('#gregoriaans-player').get(0).stop();
+    $('#radio-maria-vlaanderen-player').get(0).src = '';
+    $('#radio-maria-vlaanderen-player').get(0).load();
+    $('#getijden-player').get(0).pause();
+    $('#barroux-player').get(0).pause();
+    $('#gregoriaans-player').get(0).pause();
     jwplayer('radio-maria-nederland-player').stop();
 }
 
@@ -113,6 +114,8 @@ $(document).ready(function(){
             stopall();
         } else {
             stopall();
+            $('#radio-maria-vlaanderen-player').get(0).src = 'http://stream.radiomaria.be:8000/RadioMaria-32';
+            $('#radio-maria-vlaanderen-player').get(0).load();
             $('#radio-maria-vlaanderen-player').get(0).play();
             $(this).closest('li').addClass('playing');
         }
