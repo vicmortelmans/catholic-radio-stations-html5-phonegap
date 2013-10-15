@@ -10,7 +10,6 @@ function toggleplay(audio) {
 
 function stop(playerid) {
     var player = $('#' + playerid).get(0);
-    player.realsrc = player.currentSrc;
     player.src = '';
     player.load();
     return;
@@ -28,20 +27,16 @@ function stopall() {
 
 function start(playerid) {
     var player = $('#' + playerid).get(0);
-    if (! player.src) {
-        player.src = player.realsrc;
-        player.load();
-    }
+    player.src = player.currentSrc;
+    player.load();
     player.play();
     return;    
 }
 
 function poll(playerid){
     var player = $('#' + playerid).get(0);
-    if (! player.src) {
-        player.src = player.realsrc;
-        player.load();
-    }
+    player.src = player.currentSrc;
+    player.load();
     return;    
 }
 
