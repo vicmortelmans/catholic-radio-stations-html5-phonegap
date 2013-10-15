@@ -71,7 +71,7 @@ function barrouxstatus() {
         }
     } else {
         if (nowtime < 600) {
-            status = "De lauden starten om 6:00";
+            status = "Aanvang Lauden rond 6:00";
         } else if (nowtime < 745) {
             status = "Aanvang Priem rond 7:45 of 8:00 (zondag)";
         } else if (nowtime < 1215) {
@@ -94,6 +94,7 @@ function barrouxstatus() {
 }
 
 $(document).ready(function(){
+    /* Events for players coming ready */
     jwplayer('radio-maria-nederland-player').onReady(function(){
         if (jwplayer('radio-maria-nederland-player').getState() == 'IDLE') {
             $('#radio-maria-nederland').closest('li').removeClass('notready');
@@ -120,6 +121,7 @@ $(document).ready(function(){
         stop('gregoriaans-player');
         return;
     });
+    /* Events for players being clicked */
     $('#radio-maria-nederland').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
             return;
@@ -180,6 +182,7 @@ $(document).ready(function(){
         }
         return;
     });
+    /* Events for players failing connection */
     jwplayer('radio-maria-nederland-player').onError(function(){ 
         $('#radio-maria-nederland').closest('li').addClass('notready');
         return;
@@ -200,10 +203,12 @@ $(document).ready(function(){
         $('#gregoriaans').closest('li').addClass('notready');
         return;
     });
+    /* Event for leaving the browser page */
     $('div').on('pagebeforehide',function(){
         stopall();
         return;
     });
+    /* Start polling */
     getijdenstatus();
     barrouxstatus();
 });
