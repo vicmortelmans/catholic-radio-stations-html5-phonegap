@@ -34,6 +34,11 @@ function start(playerid) {
     return;    
 }
 
+function poll(playerid){
+    
+    return;    
+}
+
 function getijdenstatus() {
     var getijdenstatusurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=fd4429e792f74e446ea153b4efadc663&_render=json&_callback=?";
     var getijdenstatusladen = $.getJSON(getijdenstatusurl);
@@ -41,7 +46,7 @@ function getijdenstatus() {
         $('#getijdenstatus').text(d.value.items[0].content);
     });
     if ($('#getijden').closest('li').hasClass('notready')) {
-        $('#getijden-player').get(0).load();
+        start('getijden-player');
     }
     setTimeout(getijdenstatus,60000);
 }
@@ -83,7 +88,7 @@ function barrouxstatus() {
     }
     $('#barrouxstatus').text(status);
     if ($('#barroux').closest('li').hasClass('notready')) {
-        $('#barroux-player').get(0).load();
+        start('barroux-player');
     }
     setTimeout(barrouxstatus,60000);
 }
@@ -97,18 +102,22 @@ $(document).ready(function(){
     });
     $('#radio-maria-vlaanderen-player').on('canplay',function(){
         $('#radio-maria-vlaanderen').closest('li').removeClass('notready');
+        stop('radio-maria-vlaanderen-player');
         return;
     });
     $('#getijden-player').on('canplay',function(){
         $('#getijden').closest('li').removeClass('notready');
+        stop('getijden-player');
         return;
     });
     $('#barroux-player').on('canplay',function(){
         $('#barroux').closest('li').removeClass('notready');
+        stop('barroux-player');
         return;
     });
     $('#gregoriaans-player').on('canplay',function(){
         $('#gregoriaans').closest('li').removeClass('notready');
+        stop('gregoriaans-player');
         return;
     });
     $('#radio-maria-nederland').on('click',function(){
