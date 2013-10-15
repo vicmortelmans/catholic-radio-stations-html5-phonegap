@@ -20,7 +20,6 @@ function stopall() {
 function start(playerid) {
     var player = $('#' + playerid).get(0);
     player.src = player.currentSrc;
-    player.load();
     player.play();
     return;    
 }
