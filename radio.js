@@ -202,7 +202,7 @@ $(document).ready(function(){
     
     /* Events for players failing connection */
     
-    jwplayer('radio-maria-nederland-player').onBuffer(function(){ 
+/*    jwplayer('radio-maria-nederland-player').onBuffer(function(){ 
         $('#radio-maria-nederland').closest('li').addClass('notready');
         return;
     });
@@ -222,7 +222,7 @@ $(document).ready(function(){
         $('#gregoriaans').closest('li').addClass('notready');
         return;
     });
-    
+*/    
     /* Event for leaving the browser page */
     
     $('div').on('pagebeforehide',function(){
