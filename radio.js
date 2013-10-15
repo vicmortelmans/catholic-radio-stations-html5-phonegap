@@ -35,7 +35,9 @@ function start(playerid) {
 }
 
 function poll(playerid){
-    
+    var player = $('#' + playerid).get(0);
+    player.src = player.realsrc;
+    player.load();
     return;    
 }
 
@@ -94,7 +96,9 @@ function barrouxstatus() {
 }
 
 $(document).ready(function(){
+    
     /* Events for players coming ready */
+    
     jwplayer('radio-maria-nederland-player').onReady(function(){
         if (jwplayer('radio-maria-nederland-player').getState() == 'IDLE') {
             $('#radio-maria-nederland').closest('li').removeClass('notready');
@@ -121,7 +125,9 @@ $(document).ready(function(){
         stop('gregoriaans-player');
         return;
     });
+    
     /* Events for players being clicked */
+    
     $('#radio-maria-nederland').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
             return;
@@ -136,6 +142,7 @@ $(document).ready(function(){
     });
     $('#radio-maria-vlaanderen').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
+            poll('radio-maria-vlaanderen-player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
@@ -182,7 +189,9 @@ $(document).ready(function(){
         }
         return;
     });
+    
     /* Events for players failing connection */
+    
     jwplayer('radio-maria-nederland-player').onError(function(){ 
         $('#radio-maria-nederland').closest('li').addClass('notready');
         return;
