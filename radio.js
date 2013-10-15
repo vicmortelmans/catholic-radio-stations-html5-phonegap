@@ -1,13 +1,5 @@
 var getijdenrooster = [];
 
-function toggleplay(audio) {
-    if (audio.paused) 
-        audio.play();
-    else
-        audio.pause();
-    return;
-}    
-
 function stop(playerid) {
     var player = $('#' + playerid).get(0);
     player.src = '';
@@ -99,8 +91,10 @@ $(document).ready(function(){
     /* Events for players coming ready */
     
     jwplayer('radio-maria-nederland-player').onReady(function(){
-        if (jwplayer('radio-maria-nederland-player').getState() == 'IDLE') {
-            $('#radio-maria-nederland').closest('li').removeClass('notready');
+        if (! $('#radio-maria-nederland').closest('li').hasClass('playing')){
+            if (jwplayer('radio-maria-nederland-player').getState() == 'IDLE') {
+                $('#radio-maria-nederland').closest('li').removeClass('notready');
+            }
         }
         return;
     });
@@ -112,18 +106,24 @@ $(document).ready(function(){
         return;
     });
     $('#getijden-player').on('canplay',function(){
-        $('#getijden').closest('li').removeClass('notready');
-        stop('getijden-player');
+        if (! $('#getijden').closest('li').hasClass('playing')){
+            $('#getijden').closest('li').removeClass('notready');
+            stop('getijden-player');
+        }
         return;
     });
     $('#barroux-player').on('canplay',function(){
-        $('#barroux').closest('li').removeClass('notready');
-        stop('barroux-player');
+        if (! $('#barroux').closest('li').hasClass('playing')){
+            $('#barroux').closest('li').removeClass('notready');
+            stop('barroux-player');
+        }
         return;
     });
     $('#gregoriaans-player').on('canplay',function(){
-        $('#gregoriaans').closest('li').removeClass('notready');
-        stop('gregoriaans-player');
+        if (! $('#gregoriaans').closest('li').hasClass('playing')){
+            $('#gregoriaans').closest('li').removeClass('notready');
+            stop('gregoriaans-player');
+        }
         return;
     });
     
@@ -131,13 +131,14 @@ $(document).ready(function(){
     
     $('#radio-maria-nederland').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
+            jwplayer('radio-maria-nederland-player').pause(true);
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
-            jwplayer('radio-maria-nederland-player').play(true);
             $(this).closest('li').addClass('playing');
+            jwplayer('radio-maria-nederland-player').play(true);
         }
         return;
     });
@@ -156,37 +157,40 @@ $(document).ready(function(){
     });
     $('#getijden').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
+            poll('getijden-player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
-            start('getijden-player');
             $(this).closest('li').addClass('playing');
+            start('getijden-player');
         }
         return;
     });
     $('#barroux').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
+            poll('barroux-player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
-            start('barroux-player');
             $(this).closest('li').addClass('playing');
+            start('barroux-player');
         }
         return;
     });
     $('#gregoriaans').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
+            poll('gregoriaans-player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             stopall();
         } else {
             stopall();
-            start('gregoriaans-player');
             $(this).closest('li').addClass('playing');
+            start('gregoriaans-player');
         }
         return;
     });

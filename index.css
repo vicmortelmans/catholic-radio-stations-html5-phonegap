@@ -33,7 +33,7 @@ html, body { background-color: #FFFFFF !important;}
 .notready {
   border-right: 15px solid #ff0000;
 }
-/*.hiding {
+.hiding {
     position: relative;
     overflow: hidden;
 }
@@ -41,4 +41,4 @@ html, body { background-color: #FFFFFF !important;}
 .hidden {
     position: absolute;
     left: 550px;
-}*/
+}
