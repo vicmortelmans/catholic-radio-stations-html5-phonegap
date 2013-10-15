@@ -200,29 +200,6 @@ $(document).ready(function(){
         return;
     });
     
-    /* Events for players failing connection */
-    
-/*    jwplayer('radio-maria-nederland-player').onBuffer(function(){ 
-        $('#radio-maria-nederland').closest('li').addClass('notready');
-        return;
-    });
-    $('#radio-maria-vlaanderen-player').on('waiting',function(){
-        $('#radio-maria-vlaanderen').closest('li').addClass('notready');
-        return;
-    });
-    $('#getijden-player').on('waiting',function(){
-        $('#getijden').closest('li').addClass('notready');
-        return;
-    });
-    $('#barroux-player').on('waiting',function(){
-        $('#barroux').closest('li').addClass('notready');
-        return;
-    });
-    $('#gregoriaans-player').on('waiting',function(){
-        $('#gregoriaans').closest('li').addClass('notready');
-        return;
-    });
-*/    
     /* Event for leaving the browser page */
     
     $('div').on('pagebeforehide',function(){
