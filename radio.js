@@ -105,8 +105,10 @@ $(document).ready(function(){
         return;
     });
     $('#radio-maria-vlaanderen-player').on('canplay',function(){
-        $('#radio-maria-vlaanderen').closest('li').removeClass('notready');
-        stop('radio-maria-vlaanderen-player');
+        if (! $(this).closest('li').hasClass('playing')){
+            $('#radio-maria-vlaanderen').closest('li').removeClass('notready');
+            stop('radio-maria-vlaanderen-player');
+        }
         return;
     });
     $('#getijden-player').on('canplay',function(){
