@@ -33,6 +33,9 @@ html, body { background-color: #FFFFFF !important;}
 .notready {
   border-right: 15px solid #ff0000;
 }
+#info {
+    text-align: center;
+}
 .hiding {
     position: relative;
     overflow: hidden;
