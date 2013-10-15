@@ -1,4 +1,10 @@
 var getijdenrooster = [];
+var sources = {
+    "radio-maria-vlaanderen-player":"http://stream.radiomaria.be:8000/RadioMaria-32",
+    "getijden-player":"http://streamcluster02.true.nl/mediapastoraat",
+    "barroux-player":"http://audio.barroux.org:8000/chant",
+    "gregoriaans-player":"http://streams.greenhost.nl:8080/gregoriaans"
+};
 
 function stop(playerid) {
     var player = $('#' + playerid).get(0);
@@ -19,14 +25,14 @@ function stopall() {
 
 function start(playerid) {
     var player = $('#' + playerid).get(0);
-    player.src = player.currentSrc;
+    player.src = sources[playerid];
     player.play();
     return;    
 }
 
 function poll(playerid){
     var player = $('#' + playerid).get(0);
-    player.src = player.currentSrc;
+    player.src = sources[playerid];
     player.load();
     return;    
 }
@@ -196,32 +202,36 @@ $(document).ready(function(){
     
     /* Events for players failing connection */
     
-    jwplayer('radio-maria-nederland-player').onError(function(){ 
+    jwplayer('radio-maria-nederland-player').onBuffer(function(){ 
         $('#radio-maria-nederland').closest('li').addClass('notready');
         return;
     });
-    $('#radio-maria-vlaanderen-player').on('stalled',function(){
+    $('#radio-maria-vlaanderen-player').on('waiting',function(){
         $('#radio-maria-vlaanderen').closest('li').addClass('notready');
         return;
     });
-    $('#getijden-player').on('stalled',function(){
+    $('#getijden-player').on('waiting',function(){
         $('#getijden').closest('li').addClass('notready');
         return;
     });
-    $('#barroux-player').on('stalled',function(){
+    $('#barroux-player').on('waiting',function(){
         $('#barroux').closest('li').addClass('notready');
         return;
     });
-    $('#gregoriaans-player').on('stalled',function(){
+    $('#gregoriaans-player').on('waiting',function(){
         $('#gregoriaans').closest('li').addClass('notready');
         return;
     });
+    
     /* Event for leaving the browser page */
+    
     $('div').on('pagebeforehide',function(){
         stopall();
         return;
     });
+    
     /* Start polling */
+    
     getijdenstatus();
     barrouxstatus();
 });
