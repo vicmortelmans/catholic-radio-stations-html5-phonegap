@@ -3,7 +3,7 @@
 	<head>
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"> 
-    	<title>Mechelse Catechismus</title> 
+    	<title>Katholieke Radio</title> 
         <link rel="stylesheet" href="jquery.mobile.theme-1.3.2.min.css" />
         <link rel="stylesheet" href="jquery.mobile.structure-1.3.2.min.css" />
         <link rel="icon" type="image/png" href="favicon.png" />
@@ -27,6 +27,9 @@
             <div data-role="content">
                 
                 <ul data-role="listview" id="sets" data-icon="false">
+                    <li>
+                        <a href="#info" data-rel="popup">info</a>
+                    </li>
                     <li class="notready">
                         <a id="radio-maria-nederland"><img src="radiomaria.jpg" />Radio Maria Nederland</a>
                     </li>
@@ -34,13 +37,37 @@
                         <a id="radio-maria-vlaanderen"><img src="radiomaria.jpg" />Radio Maria Vlaanderen</a>
                     </li>
                     <li class="notready">
-                        <a id="getijden"><img src="getijden.jpg" />Getijden<br/><small><span id="getijdenstatus"></span></small></a>
+                        <a id="getijden"><img src="getijden.jpg" />Getijden (novus ordo)<br/><small>Abdij O. L. Vrouw van Koningsoord</small><br/><small><span id="getijdenstatus"></span></small></a>
+                    </li>
+                    <li class="notready">
+                        <a id="barroux"><img src="barroux.png" />Getijden (vetus ordo)<br/><small>Abbaye du Barroux</small><br/><small><span id="barrouxstatus"></span></small></a>
                     </li>
                     <li class="notready">
                         <a id="gregoriaans"><img src="concertzender.png" />Gregoriaans</a>
                     </li>
                 </ul>
             </div>
+            <div data-role="popup" id="info">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Sluiten</a>
+                <ul data-role="listview" data-icon="false">
+                    <li>
+                        <a href="http://www.radiomaria.nl" target="_blank">Radio Maria Nederland</a>
+                    </li>
+                    <li>
+                        <a href="http://www.radiomaria.be" target="_blank">Radio Maria Vlaanderen</a>
+                    </li>
+                    <li>
+                        <a href="http://www.koningsoord.org/nl/00_ho_home.htm" target="_blank">Abdij O. L. Vrouw van Koningsoord</a>
+                    </li>
+                    <li>
+                        <a href="http://www.barroux.org/fr/liturgie/ecoutez-nos-offices.html" target="_blank">Abbaye du Barroux</a>
+                    </li>
+                    <li>
+                        <a href="http://www.concertzender.nl/thema/oude-muziek/oude-muziek-blog/" target="_blank">Concertzender</a>
+                    </li>
+                </ul>
+            </div>       
+       
         </div><!-- /page -->
 
         <div class="hiding">
@@ -59,21 +86,23 @@
         
                 <audio controls width="100%" id="radio-maria-vlaanderen-player">
                     <source src="http://stream.radiomaria.be:8000/RadioMaria-32" type="audio/mpeg">
-                    <embed width="100%" src="http://stream.radiomaria.be:8000/RadioMaria-32">
                 </audio>
         
                 <audio controls width="100%" id="getijden-player">
                     <source src="http://streamcluster02.true.nl/mediapastoraat" type="audio/mpeg">
-                    <embed width="100%" src="http://streamcluster02.true.nl/mediapastoraat">
+                </audio>
+                
+                <audio controls width="100%" id="barroux-player">
+                    <source src="http://audio.barroux.org:8000/chant" type="audio/mpeg">
                 </audio>
                 
                 <audio controls width="100%" id="gregoriaans-player">
                     <source src="http://streams.greenhost.nl:8080/gregoriaans" type="audio/mpeg">
-                    <embed width="100%" src="http://streams.greenhost.nl:8080/gregoriaans">
                 </audio>
         
             </div>
         </div>
        
+
     </body>
 </html>

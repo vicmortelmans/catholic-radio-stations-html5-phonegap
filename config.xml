@@ -2,7 +2,7 @@
 <widget id="net.credomobiel.katholiekeradio" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Katholieke Radio</name>
     <description>
-        Luister naar katholieke Radio.
+        Luister naar katholieke radio.
     </description>
     <author email="info@credomobiel.net" href="http://credomobiel.net">
         Credomobiel
