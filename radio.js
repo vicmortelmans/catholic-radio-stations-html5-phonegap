@@ -10,7 +10,7 @@ function toggleplay(audio) {
 
 function stop(playerid) {
     var player = $('#' + playerid).get(0);
-    player.realsrc = player.src;
+    player.realsrc = player.currentSrc;
     player.src = '';
     player.load();
     return;
