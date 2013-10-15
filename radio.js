@@ -149,8 +149,8 @@ $(document).ready(function(){
             stopall();
         } else {
             stopall();
-            start('radio-maria-vlaanderen-player');
             $(this).closest('li').addClass('playing');
+            start('radio-maria-vlaanderen-player');
         }
         return;
     });
