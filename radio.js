@@ -105,7 +105,7 @@ $(document).ready(function(){
         return;
     });
     $('#radio-maria-vlaanderen-player').on('canplay',function(){
-        if (! $(this).closest('li').hasClass('playing')){
+        if (! $('#radio-maria-vlaanderen').closest('li').hasClass('playing')){
             $('#radio-maria-vlaanderen').closest('li').removeClass('notready');
             stop('radio-maria-vlaanderen-player');
         }
