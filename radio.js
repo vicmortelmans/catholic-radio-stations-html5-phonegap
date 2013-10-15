@@ -28,16 +28,20 @@ function stopall() {
 
 function start(playerid) {
     var player = $('#' + playerid).get(0);
-    player.src = player.realsrc;
-    player.load();
+    if (! player.src) {
+        player.src = player.realsrc;
+        player.load();
+    }
     player.play();
     return;    
 }
 
 function poll(playerid){
     var player = $('#' + playerid).get(0);
-    player.src = player.realsrc;
-    player.load();
+    if (! player.src) {
+        player.src = player.realsrc;
+        player.load();
+    }
     return;    
 }
 
@@ -48,7 +52,7 @@ function getijdenstatus() {
         $('#getijdenstatus').text(d.value.items[0].content);
     });
     if ($('#getijden').closest('li').hasClass('notready')) {
-        start('getijden-player');
+        poll('getijden-player');
     }
     setTimeout(getijdenstatus,60000);
 }
@@ -90,7 +94,7 @@ function barrouxstatus() {
     }
     $('#barrouxstatus').text(status);
     if ($('#barroux').closest('li').hasClass('notready')) {
-        start('barroux-player');
+        poll('barroux-player');
     }
     setTimeout(barrouxstatus,60000);
 }
