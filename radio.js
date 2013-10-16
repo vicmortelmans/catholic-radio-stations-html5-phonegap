@@ -37,23 +37,35 @@ function poll(playerid){
     return;    
 }
 
+function getijdenpolling() {
+    getijdenstatus();
+    if ($('#getijden').closest('li').hasClass('notready')) {
+        poll('getijden-player');
+    }
+    setTimeout(barrouxpolling,60000);
+}
+
 function getijdenstatus() {
     var getijdenstatusurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=fd4429e792f74e446ea153b4efadc663&_render=json&_callback=?";
     var getijdenstatusladen = $.getJSON(getijdenstatusurl);
     getijdenstatusladen.done(function(d){
         $('#getijdenstatus').text(d.value.items[0].content);
     });
-    if ($('#getijden').closest('li').hasClass('notready')) {
-        poll('getijden-player');
+}
+
+function barrouxpolling() {
+    barrouxstatus();
+    if ($('#barroux').closest('li').hasClass('notready')) {
+        poll('barroux-player');
     }
-    setTimeout(getijdenstatus,60000);
+    setTimeout(barrouxpolling,60000);
 }
 
 function barrouxstatus() {
     var now = new Date();
     var nowtime = now.getHours() * 100 + now.getMinutes();
     var status;
-    if ($('#barroux').closest('li').hasClass('playing')) {
+    if (! $('#barroux').closest('li').hasClass('notready')) {
         if (nowtime >= 1945) {
             status = "De completen zijn gestart om 19:45";
         } else if (nowtime >= 1730) {
@@ -77,10 +89,6 @@ function barrouxstatus() {
         }
     }
     $('#barrouxstatus').text(status);
-    if ($('#barroux').closest('li').hasClass('notready')) {
-        poll('barroux-player');
-    }
-    setTimeout(barrouxstatus,60000);
 }
 
 $(document).ready(function(){
@@ -108,12 +116,14 @@ $(document).ready(function(){
             stop('getijden-player');
         }
         return;
+        getijdenstatus();
     });
     $('#barroux-player').on('canplay',function(){
         if (! $('#barroux').closest('li').hasClass('playing')){
             $('#barroux').closest('li').removeClass('notready');
             stop('barroux-player');
         }
+        barrouxstatus();
         return;
     });
     $('#gregoriaans-player').on('canplay',function(){
