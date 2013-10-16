@@ -215,6 +215,21 @@ $(document).ready(function(){
     barrouxstatus();
 });
 
+
+$(document).on( 'pageinit',function(event){
+    $("input[type='radio']").on( "change", function(event, ui) {
+      $('.' + $(this).attr('name')).hide();
+      $('.' + $(this).attr('name') + '.' + $(this).attr('id')).show();
+    });
+    if (mobileOS == 'Android') {
+        $('.ios').hide();
+    }
+    if (mobileOS == 'iOS') {
+        $('.android').hide();
+    }
+});
+
+
 /*
  following section fixes flickering of page transitions on Android
  and must be imported between jQuery and jQuery Mobile
@@ -228,3 +243,16 @@ $(document).on('mobileinit', function()
    }
 });
 
+
+// determine OS
+var mobileOS;    // will either be iOS, Android or unknown
+var ua = navigator.userAgent;
+if ( ua.match(/iPad/i) || ua.match(/iPhone/i) ) {
+    mobileOS = 'iOS';
+}
+else if ( ua.match(/Android/i) ) {
+    mobileOS = 'Android';
+}
+else {
+    mobileOS = 'unknown';
+}

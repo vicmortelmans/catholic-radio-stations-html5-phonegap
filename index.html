@@ -48,24 +48,80 @@
                 </ul>
             </div>
             <div data-role="popup" id="info">
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Sluiten</a>
-                <ul data-role="listview" data-icon="false">
-                    <li>
-                        <a href="http://www.radiomaria.nl" target="_blank">Radio Maria Nederland</a>
-                    </li>
-                    <li>
-                        <a href="http://www.radiomaria.be" target="_blank">Radio Maria Vlaanderen</a>
-                    </li>
-                    <li>
-                        <a href="http://www.koningsoord.org/nl/00_ho_home.htm" target="_blank">Abdij O. L. Vrouw van Koningsoord</a>
-                    </li>
-                    <li>
-                        <a href="http://www.barroux.org/fr/liturgie/ecoutez-nos-offices.html" target="_blank">Abbaye du Barroux</a>
-                    </li>
-                    <li>
-                        <a href="http://www.concertzender.nl/thema/oude-muziek/oude-muziek-blog/" target="_blank">Concertzender</a>
-                    </li>
-                </ul>
+                <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Sluiten</a>
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h2>Radio Maria Nederland</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://www.radiomaria.nl" target="_blank">Website</a>
+                            </li>
+                            <li data-icon="plus" class="android">
+                                <a href="internetradio/radio-maria-nederland.pls" rel="external">
+                                    <img src="img/radiomaria.jpg" />Playlist<span class="ios"> (.pls)</span>
+                                </a>
+                            </li>
+                            <li data-icon="plus" class="ios">
+                                <a href="internetradio/radio-maria-nederland.m3u" rel="external">
+                                    <img src="img/radiomaria.jpg" />Playlist<span class="android"> (.m3u)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h2>Radio Maria Vlaanderen</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://www.radiomaria.be" target="_blank">Website</a>
+                            </li>
+                            <li data-icon="plus" class="android">
+                                <a href="internetradio/radio-maria-vlaanderen.pls" rel="external">
+                                    <img src="img/radiomaria.jpg" />Playlist<span class="ios"> (.pls)</span>
+                                </a>
+                            </li>
+                            <li data-icon="plus" class="ios">
+                                <a href="internetradio/radio-maria-vlaanderen.m3u" rel="external">
+                                    <img src="img/radiomaria.jpg" />Playlist<span class="android"> (.m3u)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h2>Abdij O. L. Vrouw van Koningsoord</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://www.koningsoord.org/nl/00_ho_home.htm" target="_blank">Website</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h2>Abbaye de Barroux</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://www.barroux.org/fr/liturgie/ecoutez-nos-offices.html" target="_blank">Website</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h2>Concertzender</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://www.concertzender.nl" target="_blank">Website</a>
+                            </li>
+                            <li data-icon="plus" class="android">
+                                <a href="internetradio/concertzender-gregoriaans.pls" rel="external">
+                                    <img src="img/radiomaria.jpg" />Playlist<span class="ios"> (.pls)</span>
+                                </a>
+                            </li>
+                            <li data-icon="plus" class="ios">
+                                <a href="internetradio/concertzender-gregoriaans.m3u" rel="external">
+                                    <img src="img/radiomaria.jpg" />Playlist<span class="android"> (.m3u)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
             </div>       
        
         </div><!-- /page -->
