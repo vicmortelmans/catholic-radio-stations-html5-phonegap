@@ -211,8 +211,8 @@ $(document).ready(function(){
     
     /* Start polling */
     
-    getijdenpolling()();
-    barrouxpolling()();
+    getijdenpolling();
+    barrouxpolling();
 });
 
 
