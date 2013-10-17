@@ -39,6 +39,22 @@ function poll(playerid){
     return;    
 }
 
+function radiomariavlaanderenpolling() {
+    radiomariavlaanderenstatus();
+    if ($('#radio-maria-vlaanderen').closest('li').hasClass('notready')) {
+        poll('radio-maria-vlaanderen-player');
+    }
+    setTimeout(radiomariavlaanderenpolling,60000);
+}
+
+function radiomariavlaanderenstatus() {
+    var radiomariavlaanderenstatusurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=912852870e591b0afa7ac38198c1e28a&_render=json&_callback=?";
+    var radiomariavlaanderenstatusladen = $.getJSON(radiomariavlaanderenstatusurl);
+    radiomariavlaanderenstatusladen.done(function(d){
+        $('#radio-maria-vlaanderen-status').text(d.value.items[0].content);
+    });
+}
+
 function getijdenpolling() {
     getijdenstatus();
     if ($('#getijden').closest('li').hasClass('notready')) {
@@ -257,6 +273,7 @@ $(document).ready(function(){
     
     /* Start polling */
     
+    radiomariavlaanderenpolling();
     getijdenpolling();
     barrouxpolling();
     vrtradiomispolling();
