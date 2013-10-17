@@ -3,7 +3,8 @@ var sources = {
     "radio-maria-vlaanderen-player":"http://stream.radiomaria.be:8000/RadioMaria-32",
     "getijden-player":"http://streamcluster02.true.nl/mediapastoraat",
     "barroux-player":"http://audio.barroux.org:8000/chant",
-    "gregoriaans-player":"http://streams.greenhost.nl:8080/gregoriaans"
+    "gregoriaans-player":"http://streams.greenhost.nl:8080/gregoriaans",
+    "vrtradiomis-player":"http://mp3.streampower.be/radio1-mid.mp3"
 };
 
 function stop(playerid) {
@@ -19,6 +20,7 @@ function stopall() {
     stop('getijden-player');
     stop('barroux-player');
     stop('gregoriaans-player');
+    stop('vrtradiomis-player');
     jwplayer('radio-maria-nederland-player').stop();
     return;
 }
@@ -91,6 +93,27 @@ function barrouxstatus() {
     $('#barrouxstatus').text(status);
 }
 
+function vrtradiomispolling() {
+    vrtradiomisstatus();
+    if ($('#barroux').closest('li').hasClass('notready')) {
+        poll('vrtradiomis-player');
+    }
+    setTimeout(vrtradiomispolling,60000);
+}
+
+function vrtradiomisstatus() {
+    var now = new Date();
+    var nowtime = now.getHours() * 100 + now.getMinutes();
+    var nowday = now.getDay();
+    var status;
+    if (nowday == 0 and nowtime >= 1000 and nowtime < 1100) {
+        status = "De mis is gestart om 10:000";
+    } else {
+        status = "Aanvang mis op zondag om 10:00";
+    }
+    $('#vrtradiomisstatus').text(status);
+}
+
 $(document).ready(function(){
     
     /* Events for players coming ready */
@@ -130,6 +153,16 @@ $(document).ready(function(){
         if (! $('#gregoriaans').closest('li').hasClass('playing')){
             $('#gregoriaans').closest('li').removeClass('notready');
             stop('gregoriaans-player');
+        }
+        return;
+    });
+    $('#vrtradiomis-player').on('canplay',function(){
+        vrtradiomisstatus();
+        if (! $('#vrtradiomis').closest('li').hasClass('playing')){
+            if ($('#vrtradiomisstatus').text().indexOf('gestart') != -1) {
+                $('#vrtradiomis').closest('li').removeClass('notready');
+            }
+            stop('vrtradiomis-player');
         }
         return;
     });
@@ -198,6 +231,19 @@ $(document).ready(function(){
             stopall();
             $(this).closest('li').addClass('playing');
             start('gregoriaans-player');
+        }
+        return;
+    });
+    $('#vrtradiomis').on('click',function(){
+        if ($(this).closest('li').hasClass('notready')) {
+            poll('vrtradiomis-player');
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
+            stopall();
+        } else {
+            stopall();
+            $(this).closest('li').addClass('playing');
+            start('vrtradiomis-player');
         }
         return;
     });

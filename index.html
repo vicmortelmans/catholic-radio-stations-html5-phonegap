@@ -45,6 +45,9 @@
                     <li class="notready">
                         <a id="gregoriaans"><img src="concertzender.png" />Gregoriaans</a>
                     </li>
+                    <li class="notready">
+                        <a id="vrtradiomis"><img src="vrt.png" />Radiomis VRT<br/><small><span id="vrtradiomisstatus"></span></small></a>
+                    </li>
                 </ul>
             </div>
             <div data-role="popup" id="info">
@@ -156,6 +159,10 @@
                     <source src="http://streams.greenhost.nl:8080/gregoriaans" type="audio/mpeg">
                 </audio>
         
+                <audio controls width="100%" id="vrtradiomis-player">
+                    <source src="http://mp3.streampower.be/radio1-mid.mp3" type="audio/mpeg">
+                </audio>
+
             </div>
         </div>
        
