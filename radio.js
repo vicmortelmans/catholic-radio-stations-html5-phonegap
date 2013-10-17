@@ -106,7 +106,7 @@ function vrtradiomisstatus() {
     var nowtime = now.getHours() * 100 + now.getMinutes();
     var nowday = now.getDay();
     var status;
-    if (nowday == 0 and nowtime >= 1000 and nowtime < 1100) {
+    if (nowday == 0 && nowtime >= 1000 && nowtime < 1100) {
         status = "De mis is gestart om 10:000";
     } else {
         status = "Aanvang mis op zondag om 10:00";
