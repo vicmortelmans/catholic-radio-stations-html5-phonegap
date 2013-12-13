@@ -130,6 +130,17 @@ function vrtradiomisstatus() {
     $('#vrtradiomisstatus').text(status);
 }
 
+function braambosinitialize() {
+    var braambosfeedurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=0786db3565cc3e818b833e1bd9213fe8&_render=json&folderid=0B-659FdpCliwLXpXNE16VW40WGM&_callback=?";
+    var braambosfeedladen = $.getJSON(braambosfeedurl);
+    braambosfeedladen.done(function(d){
+        var url = d.value.items[0].link;
+        var date = d.value.items[0].pubDate;
+        $('#braambosstatus').text(date);
+        $('#braambos-player source').attr('src',url);
+    });
+}
+
 $(document).ready(function(){
     
     /* Events for players coming ready */
@@ -277,6 +288,7 @@ $(document).ready(function(){
     getijdenpolling();
     barrouxpolling();
     vrtradiomispolling();
+    braambosinitialize();
 });
 
 
