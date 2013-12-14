@@ -193,6 +193,13 @@ $(document).ready(function(){
         }
         return;
     });
+    $('#braambos-player').on('canplay',function(){
+        if (! $('#braambos').closest('li').hasClass('playing')){
+            $('#braambos').closest('li').removeClass('notready');
+            stop('braambos-player');
+        }
+        return;
+    });
     
     /* Events for players being clicked */
     
