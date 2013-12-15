@@ -149,7 +149,7 @@ function vrtradiomisstatus() {
     var status;
     // production: nowday == 0 && nowtime >= 1000 && nowtime < 1100
     // debug: true
-    if (true) {
+    if (nowday == 0 && nowtime >= 1000 && nowtime < 1100) {
         status = "De mis is gestart om 10:000";
     } else {
         status = "Aanvang mis op zondag om 10:00";
