@@ -4,7 +4,8 @@ var sources = {
     "getijden-player":"http://streamcluster02.true.nl/mediapastoraat",
     "barroux-player":"http://audio.barroux.org:8000/chant",
     "gregoriaans-player":"http://streams.greenhost.nl:8080/gregoriaans",
-    "vrtradiomis-player":"http://mp3.streampower.be/radio1-mid.mp3"
+    "vrtradiomis-player":"http://mp3.streampower.be/radio1-mid.mp3",
+    "spes-player":"http://streaming.itaf.be:8000/radiospes"
 };
 
 function stop(playerid) {
@@ -17,10 +18,12 @@ function stop(playerid) {
 function stopall() {
     $('.playing').removeClass('playing');
     stop('radio-maria-vlaanderen-player');
+    stop('spes-player');
     stop('getijden-player');
     stop('barroux-player');
     stop('gregoriaans-player');
     stop('vrtradiomis-player');
+    stop('braambos-player');
     jwplayer('radio-maria-nederland-player').stop();
     return;
 }
@@ -55,6 +58,13 @@ function radiomariavlaanderenstatus() {
     });
 }
 
+function spespolling() {
+    if ($('#spes').closest('li').hasClass('notready')) {
+        poll('spes-player');
+    }
+    setTimeout(spespolling,60000);
+}
+
 function getijdenpolling() {
     getijdenstatus();
     if ($('#getijden').closest('li').hasClass('notready')) {
@@ -85,19 +95,27 @@ function barrouxstatus() {
     var status;
     if (! $('#barroux').closest('li').hasClass('notready')) {
         if (nowtime >= 1945) {
-            status = "De completen zijn gestart om 19:45";
+            status = "De Completen zijn gestart om 19:45";
         } else if (nowtime >= 1730) {
-            status = "De vespers zijn gestart om 17:30";
+            status = "De Vespers zijn gestart om 17:30";
+        } else if (nowtime >= 1415) {
+            status = "De Noon is gestart om 14:15 of 14:30 (zondag)";
         } else if (nowtime >= 1215) {
-            status = "De sext is gestart om 12:15";
+            status = "De Sext is gestart om 12:15";
         } else if (nowtime >= 745) {
-            status = "De priem is gestart om 7:45 of 8:00 (zondag)";
+            status = "De Priem is gestart om 7:45 of 8:00 (zondag)";
+        } else if (nowtime >= 600) {
+            status = "De Lauden zijn gestart om 6:00";
         }
     } else {
-        if (nowtime < 745) {
+        if (nowtime < 600) {
+            status = "Aanvang Lauden rond 6:00";
+        } else if (nowtime < 745) {
             status = "Aanvang Priem rond 7:45 of 8:00 (zondag)";
         } else if (nowtime < 1215) {
             status = "Aanvang Sext rond 12:15";
+        } else if (nowtime < 1415) {
+            status = "Aanvang Noon rond 14:15 of 14:30 (zondag)";
         } else if (nowtime < 1730) {
             status = "Aanvang Vespers rond 17:30";
         } else if (nowtime < 1945) {
@@ -109,9 +127,16 @@ function barrouxstatus() {
     $('#barrouxstatus').text(status);
 }
 
+function gregoriaanspolling() {
+    if ($('#gregoriaans').closest('li').hasClass('notready')) {
+        poll('gregoriaans-player');
+    }
+    setTimeout(gregoriaanspolling,60000);
+}
+
 function vrtradiomispolling() {
     vrtradiomisstatus();
-    if ($('#barroux').closest('li').hasClass('notready')) {
+    if ($('#vrtradiomis').closest('li').hasClass('notready')) {
         poll('vrtradiomis-player');
     }
     setTimeout(vrtradiomispolling,60000);
@@ -122,7 +147,9 @@ function vrtradiomisstatus() {
     var nowtime = now.getHours() * 100 + now.getMinutes();
     var nowday = now.getDay();
     var status;
-    if (nowday == 0 && nowtime >= 1000 && nowtime < 1100) {
+    // production: nowday == 0 && nowtime >= 1000 && nowtime < 1100
+    // debug: true
+    if (true) {
         status = "De mis is gestart om 10:000";
     } else {
         status = "Aanvang mis op zondag om 10:00";
@@ -134,10 +161,15 @@ function braambosinitialize() {
     var braambosfeedurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=0786db3565cc3e818b833e1bd9213fe8&_render=json&folderid=0B-659FdpCliwLXpXNE16VW40WGM&_callback=?";
     var braambosfeedladen = $.getJSON(braambosfeedurl);
     braambosfeedladen.done(function(d){
+        var player = $('#braambos-player').get(0);
+        var date = new Date(d.value.items[0].pubDate);
+        var day = date.getDate();
+        var month = months[date.getMonth()];
         var url = d.value.items[0].link;
-        var date = d.value.items[0].pubDate;
-        $('#braambosstatus').text(date);
-        $('#braambos-player source').attr('src',url);
+        $('#braambosstatus').text('Uitzending van ' + day + ' ' + month);
+        sources['braambos-player'] = url;
+        player.src = url;
+        player.load();
     });
 }
 
@@ -157,6 +189,13 @@ $(document).ready(function(){
         if (! $('#radio-maria-vlaanderen').closest('li').hasClass('playing')){
             $('#radio-maria-vlaanderen').closest('li').removeClass('notready');
             stop('radio-maria-vlaanderen-player');
+        }
+        return;
+    });
+    $('#spes-player').on('canplay',function(){
+        if (! $('#spes').closest('li').hasClass('playing')){
+            $('#spes').closest('li').removeClass('notready');
+            stop('spes-player');
         }
         return;
     });
@@ -229,6 +268,19 @@ $(document).ready(function(){
         }
         return;
     });
+    $('#spes').on('click',function(){
+        if ($(this).closest('li').hasClass('notready')) {
+            poll('spes-player');
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
+            stopall();
+        } else {
+            stopall();
+            $(this).closest('li').addClass('playing');
+            start('spes-player');
+        }
+        return;
+    });
     $('#getijden').on('click',function(){
         if ($(this).closest('li').hasClass('notready')) {
             poll('getijden-player');
@@ -281,6 +333,19 @@ $(document).ready(function(){
         }
         return;
     });
+    $('#braambos').on('click',function(){
+        if ($(this).closest('li').hasClass('notready')) {
+            poll('braambos-player');
+            return;
+        } else if ($(this).closest('li').hasClass('playing')) {
+            stopall();
+        } else {
+            stopall();
+            $(this).closest('li').addClass('playing');
+            start('braambos-player');
+        }
+        return;
+    });
     
     /* Event for leaving the browser page */
     
@@ -292,9 +357,13 @@ $(document).ready(function(){
     /* Start polling */
     
     radiomariavlaanderenpolling();
+    spespolling();
     getijdenpolling();
     barrouxpolling();
     vrtradiomispolling();
+    
+    /* Initialize variable sources */
+    
     braambosinitialize();
 });
 
@@ -338,4 +407,7 @@ else if ( ua.match(/Android/i) ) {
 }
 else {
     mobileOS = 'unknown';
+    
+// months
+var months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 }

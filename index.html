@@ -37,6 +37,9 @@
                         <a id="radio-maria-vlaanderen"><img src="radiomaria.jpg" />Radio Maria Vlaanderen<br/><small><span id="radio-maria-vlaanderen-status"></span></small></a>
                     </li>
                     <li class="notready">
+                        <a id="spes"><img src="spes.png" />Radio Spes<br/></a>
+                    </li>
+                    <li class="notready">
                         <a id="getijden"><img src="getijden.jpg" />Getijden (novus ordo)<br/><small>Abdij O. L. Vrouw van Koningsoord</small><br/><small><span id="getijdenstatus"></span></small></a>
                     </li>
                     <li class="notready">
@@ -89,6 +92,14 @@
                                 <a href="internetradio/radio-maria-vlaanderen.m3u" rel="external">
                                     Playlist<span class="android"> (.m3u)</span>
                                 </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h2>Radio Spes</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://www.radiospes.be/" target="_blank">Website</a>
                             </li>
                         </ul>
                     </div>
@@ -166,20 +177,24 @@
                     <source src="http://stream.radiomaria.be:8000/RadioMaria-32" type="audio/mpeg">
                 </audio>
         
+                <audio controls width="100%" id="spes-player">
+                    <source type="audio/mpeg">
+                </audio>
+        
                 <audio controls width="100%" id="getijden-player">
-                    <source src="http://streamcluster02.true.nl/mediapastoraat" type="audio/mpeg">
+                    <source type="audio/mpeg">
                 </audio>
                 
                 <audio controls width="100%" id="barroux-player">
-                    <source src="http://audio.barroux.org:8000/chant" type="audio/mpeg">
+                    <source type="audio/mpeg">
                 </audio>
                 
                 <audio controls width="100%" id="gregoriaans-player">
-                    <source src="http://streams.greenhost.nl:8080/gregoriaans" type="audio/mpeg">
+                    <source type="audio/mpeg">
                 </audio>
         
                 <audio controls width="100%" id="vrtradiomis-player">
-                    <source src="http://mp3.streampower.be/radio1-mid.mp3" type="audio/mpeg">
+                    <source type="audio/mpeg">
                 </audio>
 
                 <audio controls width="100%" id="braambos-player">
