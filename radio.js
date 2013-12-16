@@ -16,7 +16,6 @@ function stop(playerid) {
 }
 
 function stopall() {
-    $('.playing').removeClass('playing');
     stop('radio-maria-vlaanderen-player');
     stop('spes-player');
     stop('getijden-player');
@@ -25,6 +24,11 @@ function stopall() {
     stop('vrtradiomis-player');
     pause('braambos-player');
     jwplayer('radio-maria-nederland-player').stop();
+    if ($('#braambos').closest('li').hasClass('playing')) {
+        $('#braambos').closest('li').removeClass('playing');
+        $('#braambos').closest('li').addClass('pause');
+    }
+    $('.playing').removeClass('playing');
     return;
 }
 
@@ -245,7 +249,6 @@ $(document).ready(function(){
     $('#braambos-player').on('canplay',function(){
         if (! $('#braambos').closest('li').hasClass('playing')){
             $('#braambos').closest('li').removeClass('notready');
-            stop('braambos-player');
         }
         return;
     });
