@@ -180,7 +180,7 @@ function braambosinitialize() {
         var player = $('#braambos-player').get(0);
         var title = d.value.items[0].title;
         var url = d.value.items[0].link;
-        $('#braambosstatus').text(title);
+        $('#braambosstatus').text(title.replace('.mp3',''));
         sources['braambos-player'] = url;
         player.src = url;
         player.load();
