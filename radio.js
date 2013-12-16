@@ -23,7 +23,7 @@ function stopall() {
     stop('barroux-player');
     stop('gregoriaans-player');
     stop('vrtradiomis-player');
-    stop('braambos-player');
+    pause('braambos-player');
     jwplayer('radio-maria-nederland-player').stop();
     return;
 }
@@ -352,6 +352,7 @@ $(document).ready(function(){
             $(this).closest('li').addClass('pause');
             pause('braambos-player');
         } else if ($(this).closest('li').hasClass('pause')) {
+            stopall();
             $(this).closest('li').removeClass('pause');
             $(this).closest('li').addClass('playing');
             unpause('braambos-player');
