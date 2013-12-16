@@ -162,11 +162,9 @@ function braambosinitialize() {
     var braambosfeedladen = $.getJSON(braambosfeedurl);
     braambosfeedladen.done(function(d){
         var player = $('#braambos-player').get(0);
-        var date = new Date(d.value.items[0].pubDate);
-        var day = date.getDate();
-        var month = months[date.getMonth()];
+        var title = d.value.items[0].title;
         var url = d.value.items[0].link;
-        $('#braambosstatus').text('Uitzending van ' + day + ' ' + month);
+        $('#braambosstatus').text(title);
         sources['braambos-player'] = url;
         player.src = url;
         player.load();
@@ -360,6 +358,7 @@ $(document).ready(function(){
     spespolling();
     getijdenpolling();
     barrouxpolling();
+    gregoriaanspolling();
     vrtradiomispolling();
     
     /* Initialize variable sources */
