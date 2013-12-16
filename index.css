@@ -33,6 +33,9 @@ html, body { background-color: #FFFFFF !important;}
 .notready {
   border-right: 15px solid #ff0000;
 }
+.pause {
+  border-right: 15px solid gray;
+}
 .info {
     text-align: center;
 }

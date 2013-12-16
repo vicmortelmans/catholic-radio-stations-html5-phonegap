@@ -35,6 +35,18 @@ function start(playerid) {
     return;    
 }
 
+function pause(playerid) {
+    var player = $('#' + playerid).get(0);
+    player.pause();
+    return;    
+}
+
+function unpause(playerid) {
+    var player = $('#' + playerid).get(0);
+    player.play();
+    return;    
+}
+
 function poll(playerid){
     var player = $('#' + playerid).get(0);
     player.src = sources[playerid];
@@ -336,7 +348,13 @@ $(document).ready(function(){
             poll('braambos-player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
-            stopall();
+            $(this).closest('li').removeClass('playing');
+            $(this).closest('li').addClass('pause');
+            pause('braambos-player');
+        } else if ($(this).closest('li').hasClass('pause')) {
+            $(this).closest('li').removeClass('pause');
+            $(this).closest('li').addClass('playing');
+            unpause('braambos-player');
         } else {
             stopall();
             $(this).closest('li').addClass('playing');
