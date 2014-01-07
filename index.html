@@ -52,7 +52,10 @@
                         <a id="vrtradiomis"><img src="vrtradiomis.png" />Radiomis VRT<br/><small><span id="vrtradiomisstatus"></span></small></a>
                     </li>
                     <li class="notready">
-                        <a id="braambos"><img src="braambos.png" />Braambos<br/><small><span id="braambosstatus"></span></small></a>
+                        <a id="braambos" class="static"><img src="braambos.png" />Braambos<br/><small><span id="braambosstatus"></span></small></a>
+                    </li>
+                    <li class="notready">
+                        <a id="platenparadijs" class="static"><img src="platenparadijs.png" />RKK Platenparadijs<br/><small><span id="platenparadijs"></span></small></a>
                     </li>
                 </ul>
             </div>
@@ -153,6 +156,14 @@
                             </li>
                         </ul>
                     </div>
+                    <div data-role="collapsible">
+                        <h2>RKK</h2>
+                        <ul data-role="listview" data-icon="false">
+                            <li>
+                                <a href="http://62.144.115.184/index.html" target="_blank">Website</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 
             </div>       
@@ -198,6 +209,10 @@
                 </audio>
 
                 <audio controls width="100%" id="braambos-player">
+                    <source type="audio/mpeg">
+                </audio>
+
+                <audio controls width="100%" id="platenparadijs-player">
                     <source type="audio/mpeg">
                 </audio>
 

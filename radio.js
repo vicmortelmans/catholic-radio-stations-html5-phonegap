@@ -23,11 +23,14 @@ function stopall() {
     stop('gregoriaans-player');
     stop('vrtradiomis-player');
     pause('braambos-player');
+    pause('platenparadijs-player');
     jwplayer('radio-maria-nederland-player').stop();
-    if ($('#braambos').closest('li').hasClass('playing')) {
-        $('#braambos').closest('li').removeClass('playing');
-        $('#braambos').closest('li').addClass('pause');
-    }
+    $('.static').each(function() {
+        if ($(this).closest('li').hasClass('playing')) {
+            $(this).closest('li').removeClass('playing');
+            $(this).closest('li').addClass('pause');
+        }
+    });
     $('.playing').removeClass('playing');
     return;
 }
@@ -187,6 +190,21 @@ function braambosinitialize() {
     });
 }
 
+function rkkinitialize(url, name) {
+    var feedurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=b1b249fa8cc5a08052a9065ac36f1a94&_render=json&url=%url&_callback=?";
+    feedurl = feedurl.replace('%url', encodeURIComponent(url));
+    var feedladen = $.getJSON(feedurl);
+    feedladen.done(function(d){
+        var player = $('#' + name + '-player').get(0);
+        var title = d.value.items[0].title;
+        var url = d.value.items[0]['feedburner:origEnclosureLink'];
+        $('#' + name + 'status').text(title);
+        sources[name + '-player'] = url;
+        player.src = url;
+        player.load();
+    });
+}
+
 $(document).ready(function(){
     
     /* Events for players coming ready */
@@ -249,6 +267,12 @@ $(document).ready(function(){
     $('#braambos-player').on('canplay',function(){
         if (! $('#braambos').closest('li').hasClass('playing')){
             $('#braambos').closest('li').removeClass('notready');
+        }
+        return;
+    });
+    $('#platenparadijs-player').on('canplay',function(){
+        if (! $('#platenparadijs').closest('li').hasClass('playing')){
+            $('#platenparadijs').closest('li').removeClass('notready');
         }
         return;
     });
@@ -346,23 +370,24 @@ $(document).ready(function(){
         }
         return;
     });
-    $('#braambos').on('click',function(){
+    $('.static').on('click',function(){
+        var name = $(this).attr('id');
         if ($(this).closest('li').hasClass('notready')) {
-            poll('braambos-player');
+            poll(name + 'player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             $(this).closest('li').removeClass('playing');
             $(this).closest('li').addClass('pause');
-            pause('braambos-player');
+            pause(name + 'player');
         } else if ($(this).closest('li').hasClass('pause')) {
             stopall();
             $(this).closest('li').removeClass('pause');
             $(this).closest('li').addClass('playing');
-            unpause('braambos-player');
+            unpause(name + 'player');
         } else {
             stopall();
             $(this).closest('li').addClass('playing');
-            start('braambos-player');
+            start(name + 'player');
         }
         return;
     });
@@ -386,6 +411,7 @@ $(document).ready(function(){
     /* Initialize variable sources */
     
     braambosinitialize();
+    rkkinitialize('http://feeds.kro.nl/RKKPlatenparadijs?format=xml','platenparadijs');
 });
 
 
