@@ -24,6 +24,9 @@ function stopall() {
     stop('vrtradiomis-player');
     pause('braambos-player');
     pause('platenparadijs-player');
+    pause('katholiek-nederland-player');
+    pause('kruispunt-player');
+    pause('wat-blijft-player');
     jwplayer('radio-maria-nederland-player').stop();
     $('.static').each(function() {
         if ($(this).closest('li').hasClass('playing')) {
@@ -276,6 +279,24 @@ $(document).ready(function(){
         }
         return;
     });
+    $('#katholiek-nederland-player').on('canplay',function(){
+        if (! $('#katholiek-nederland').closest('li').hasClass('playing')){
+            $('#katholiek-nederland').closest('li').removeClass('notready');
+        }
+        return;
+    });
+    $('#kruispunt-player').on('canplay',function(){
+        if (! $('#kruispunt').closest('li').hasClass('playing')){
+            $('#kruispunt').closest('li').removeClass('notready');
+        }
+        return;
+    });
+    $('#wat-blijft-player').on('canplay',function(){
+        if (! $('#wat-blijft').closest('li').hasClass('playing')){
+            $('#wat-blijft').closest('li').removeClass('notready');
+        }
+        return;
+    });
     
     /* Events for players being clicked */
     
@@ -412,6 +433,9 @@ $(document).ready(function(){
     
     braambosinitialize();
     rkkinitialize('http://feeds.kro.nl/RKKPlatenparadijs?format=xml','platenparadijs');
+    rkkinitialize('http://feeds.kro.nl/KatholiekNederlandRadio?format=xml','katholiek-nederland');
+    rkkinitialize('http://feeds.feedburner.com/kruispuntradio?format=xml','kruispunt');
+    rkkinitialize('http://feeds.kro.nl/RkkWatBlijft?format=xml','wat-blijft');
 });
 
 
