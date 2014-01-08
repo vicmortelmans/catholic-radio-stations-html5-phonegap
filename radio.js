@@ -373,21 +373,21 @@ $(document).ready(function(){
     $('.static').on('click',function(){
         var name = $(this).attr('id');
         if ($(this).closest('li').hasClass('notready')) {
-            poll(name + 'player');
+            poll(name + '-player');
             return;
         } else if ($(this).closest('li').hasClass('playing')) {
             $(this).closest('li').removeClass('playing');
             $(this).closest('li').addClass('pause');
-            pause(name + 'player');
+            pause(name + '-player');
         } else if ($(this).closest('li').hasClass('pause')) {
             stopall();
             $(this).closest('li').removeClass('pause');
             $(this).closest('li').addClass('playing');
-            unpause(name + 'player');
+            unpause(name + '-player');
         } else {
             stopall();
             $(this).closest('li').addClass('playing');
-            start(name + 'player');
+            start(name + '-player');
         }
         return;
     });
