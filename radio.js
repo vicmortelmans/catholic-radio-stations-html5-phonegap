@@ -442,8 +442,8 @@ $(document).ready(function(){
     /* Initialize variable sources */
     
     braambosinitialize();
-    rkkinitialize('http://andersdenkenden.rkk.nl/','andersdenkenden');
-    rkkinitialize('http://echovaneeuwigheid.rkk.nl/','echovaneeuwigheid');
+    rkkinitialize2('http://andersdenkenden.rkk.nl/','andersdenkenden');
+    rkkinitialize2('http://echovaneeuwigheid.rkk.nl/','echovaneeuwigheid');
     rkkinitialize('http://feeds.feedburner.com/kruispuntradio?format=xml','kruispunt');
 });
 
