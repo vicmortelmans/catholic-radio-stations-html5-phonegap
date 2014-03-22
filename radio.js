@@ -23,10 +23,9 @@ function stopall() {
     stop('gregoriaans-player');
     stop('vrtradiomis-player');
     pause('braambos-player');
-    pause('platenparadijs-player');
-    pause('katholiek-nederland-player');
+    pause('andersdenkenden-player');
+    pause('echovaneeuwigheid-player');
     pause('kruispunt-player');
-    pause('wat-blijft-player');
     jwplayer('radio-maria-nederland-player').stop();
     $('.static').each(function() {
         if ($(this).closest('li').hasClass('playing')) {
@@ -208,6 +207,24 @@ function rkkinitialize(url, name) {
     });
 }
 
+function rkkinitialize2(url, name) {
+    var feedurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=75f9f0e958b491aceee76854425f7aba&_render=json&url=%url&_callback=?";
+    feedurl = feedurl.replace('%url', encodeURIComponent(url));
+    var feedladen = $.getJSON(feedurl);
+    feedladen.done(function(d){
+        var feedurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=27513f7b23d57ebada4c7cc87daefb36&_render=json&url=%url&_callback=?";
+        feedurl = feedurl.replace('%url', encodeURIComponent(d.value.items[0].content));
+        var feedladen = $.getJSON(feedurl);
+        feedladen.done(function(d){
+            var player = $('#' + name + '-player').get(0);
+            var url = d.value.items[0].content;
+            sources[name + '-player'] = url;
+            player.src = url;
+            player.load();
+        });
+    });
+}
+
 $(document).ready(function(){
     
     /* Events for players coming ready */
@@ -273,15 +290,15 @@ $(document).ready(function(){
         }
         return;
     });
-    $('#platenparadijs-player').on('canplay',function(){
-        if (! $('#platenparadijs').closest('li').hasClass('playing')){
-            $('#platenparadijs').closest('li').removeClass('notready');
+    $('#andersdenkenden-player').on('canplay',function(){
+        if (! $('#andersdenkenden').closest('li').hasClass('playing')){
+            $('#andersdenkenden').closest('li').removeClass('notready');
         }
         return;
     });
-    $('#katholiek-nederland-player').on('canplay',function(){
-        if (! $('#katholiek-nederland').closest('li').hasClass('playing')){
-            $('#katholiek-nederland').closest('li').removeClass('notready');
+    $('#echovaneeuwigheid-player').on('canplay',function(){
+        if (! $('#echovaneeuwigheid').closest('li').hasClass('playing')){
+            $('#echovaneeuwigheid').closest('li').removeClass('notready');
         }
         return;
     });
@@ -291,13 +308,6 @@ $(document).ready(function(){
         }
         return;
     });
-    $('#wat-blijft-player').on('canplay',function(){
-        if (! $('#wat-blijft').closest('li').hasClass('playing')){
-            $('#wat-blijft').closest('li').removeClass('notready');
-        }
-        return;
-    });
-    
     /* Events for players being clicked */
     
     $('#radio-maria-nederland').on('click',function(){
@@ -432,10 +442,9 @@ $(document).ready(function(){
     /* Initialize variable sources */
     
     braambosinitialize();
-    rkkinitialize('http://feeds.kro.nl/RKKPlatenparadijs?format=xml','platenparadijs');
-    rkkinitialize('http://feeds.kro.nl/KatholiekNederlandRadio?format=xml','katholiek-nederland');
+    rkkinitialize2('http://andersdenkenden.rkk.nl/','andersdenkenden');
+    rkkinitialize2('http://echovaneeuwigheid.rkk.nl/','echovaneeuwigheid');
     rkkinitialize('http://feeds.feedburner.com/kruispuntradio?format=xml','kruispunt');
-    rkkinitialize('http://feeds.kro.nl/RkkWatBlijft?format=xml','wat-blijft');
 });
 
 
