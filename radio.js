@@ -476,13 +476,6 @@ $(document).on('mobileinit', function()
 });
 
 
-// redirect to 'real' webpage when running in PhoneGap
-document.addEventListener("deviceready", onDeviceReady, false);            
-function onDeviceReady() {
-    document.location = 'http://vicmortelmans.github.io/catholic-radio-stations-html5-phonegap/';
-}
-
-
 // determine OS
 var mobileOS;    // will either be iOS, Android or unknown
 var ua = navigator.userAgent;

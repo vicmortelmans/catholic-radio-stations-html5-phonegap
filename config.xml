@@ -32,4 +32,5 @@
     <icon src="favicon96.png" gap:platform="android" gap:density="xhdpi" />
     <access origin="http://127.0.0.1*" />
     <access origin="*" />
+    <content src="http://vicmortelmans.github.io/catholic-radio-stations-html5-phonegap/" />
 </widget>
