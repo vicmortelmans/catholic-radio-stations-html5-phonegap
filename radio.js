@@ -222,6 +222,13 @@ function rkkinitialize2(url, name) {
             player.src = url;
             player.load();
         });
+        var titlefeedurl = "http://pipes.yahoo.com/pipes/pipe.run?_id=37c0c31688154d64a367c0af59767d5b&_render=json&url=%url&_callback=?";
+        titlefeedurl = titlefeedurl.replace('%url', encodeURIComponent(d.value.items[0].content));
+        var titlefeedladen = $.getJSON(titlefeedurl);
+        titlefeedladen.done(function(d){
+            var title = d.value.items[0].content;
+            $('#' + name + 'status').text(title);
+        });
     });
 }
 
@@ -444,7 +451,8 @@ $(document).ready(function(){
     braambosinitialize();
     rkkinitialize2('http://andersdenkenden.rkk.nl/','andersdenkenden');
     rkkinitialize2('http://echovaneeuwigheid.rkk.nl/','echovaneeuwigheid');
-    rkkinitialize('http://feeds.feedburner.com/kruispuntradio?format=xml','kruispunt');
+    rkkinitialize2('http://kruispuntradio.rkk.nl/','kruispunt');
+    //rkkinitialize('http://feeds.feedburner.com/kruispuntradio?format=xml','kruispunt');
 });
 
 
