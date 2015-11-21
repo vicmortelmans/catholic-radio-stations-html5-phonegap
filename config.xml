@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.credomobiel.katholiekeradio" version="3.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.gelovenleren.radio" version="4.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Katholieke Radio</name>
     <description>
         Luister naar katholieke radio.
     </description>
-    <author email="info@credomobiel.net" href="http://credomobiel.net">
+    <author email="info@gelovenleren.net" href="http://gelovenleren.net">
         Credomobiel
     </author>
     <gap:platform name="android" />
