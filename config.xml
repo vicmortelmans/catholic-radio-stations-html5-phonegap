@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.gelovenleren.radio" version="4.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.gelovenleren.radio" version="4.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Katholieke Radio</name>
     <description>
-        Luister naar katholieke radio.
+        Luister naar katholieke radiostations.
     </description>
     <author email="info@gelovenleren.net" href="http://gelovenleren.net">
         Credomobiel
     </author>
-    <gap:platform name="android" />
-    <gap:splash src="splash.png" width="320" height="480" />
+    <platform name="android" />
+    <splash src="splash.png" width="320" height="480" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
@@ -26,11 +26,9 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <icon src="favicon.png" />
-    <icon src="favicon36.png" gap:platform="android" gap:density="ldpi" />
-    <icon src="favicon.png" gap:platform="android" gap:density="mdpi" />
-    <icon src="favicon72.png" gap:platform="android" gap:density="hdpi" />
-    <icon src="favicon96.png" gap:platform="android" gap:density="xhdpi" />
-    <access origin="http://127.0.0.1*" />
-    <access origin="*" />
-    <!--content src="http://vicmortelmans.github.io/catholic-radio-stations-html5-phonegap/" /--->
+    <icon src="favicon36.png" platform="android" qualifier="ldpi" />
+    <icon src="favicon.png" platform="android" qualifier="mdpi" />
+    <icon src="favicon72.png" platform="android" qualifier="hdpi" />
+    <icon src="favicon96.png" platform="android" qualifier="xhdpi" />
+    <access origin="http://gelovenleren.net" subdomains="true"/>
 </widget>
