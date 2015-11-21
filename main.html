@@ -314,6 +314,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     },
                     error: function() {
                         $('#error').show();
+                    },
+                    timeout: 5000
+                });
+                // using inappbrowser plugin to open external links in system browser
+                $(document).on('click', 'a', function (event) {
+                    if (!$(this).hasClass('radio')) {
+                        event.preventDefault();
+                        window.open($(this).attr('href'), '_system');
+                        return false;
                     }
                 });
             });
