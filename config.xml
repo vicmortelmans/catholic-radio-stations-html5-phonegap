@@ -31,4 +31,5 @@
     <icon src="favicon72.png" platform="android" qualifier="hdpi" />
     <icon src="favicon96.png" platform="android" qualifier="xhdpi" />
     <access origin="http://gelovenleren.net" subdomains="true"/>
+    <access origin="http://gelovenleren.appspot.com" subdomains="true"/>
 </widget>
