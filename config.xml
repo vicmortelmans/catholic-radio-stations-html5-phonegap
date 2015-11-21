@@ -30,6 +30,9 @@
     <icon src="favicon.png" platform="android" qualifier="mdpi" />
     <icon src="favicon72.png" platform="android" qualifier="hdpi" />
     <icon src="favicon96.png" platform="android" qualifier="xhdpi" />
-    <access origin="http://gelovenleren.net" subdomains="true"/>
-    <access origin="http://gelovenleren.appspot.com" subdomains="true"/>
+    <plugin name="cordova-plugin-whitelist" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <access origin="*" />
 </widget>
