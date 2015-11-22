@@ -18,7 +18,7 @@
     <icon src="favicon.png" platform="android" qualifier="mdpi" />
     <icon src="favicon72.png" platform="android" qualifier="hdpi" />
     <icon src="favicon96.png" platform="android" qualifier="xhdpi" />
-    <plugin name="org.li8.inappbrowser" spec="0.1" source="pgb" />
+    <plugin name="org.apache.cordova.inappbrowser" source="pgb" />
     <plugin name="cordova-plugin-whitelist" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />

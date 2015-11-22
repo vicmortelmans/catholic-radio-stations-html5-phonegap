@@ -132,6 +132,14 @@
             line-height: 18px;
             padding: 0 16px 26px 16px;
             }
+            .status /* "body 2" */ {
+            font-size: 14pt;
+            font-weight: normal;
+            text-transform: uppercase;
+            opacity: 0.87;
+            line-height: 18px;
+            padding: 26px 16px 26px 16px;
+            }
             .caption /* "caption" */ {
             font-size: 12pt;
             font-weight: normal;
@@ -302,7 +310,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 });
                 $('#loading').show();
                 $.ajax({
-                    url: 'http://catecheserooster.appspot.com/radio', // for debugging: http://127.0.0.1:8080/radio
+                    // url: 'http://catecheserooster.appspot.com/radio', // for production
+                    url: 'http://127.0.0.1:8080/radio', // for debugging
                     dataType: 'jsonp',
                     success: function(items) {
                         $('#loading').hide();
