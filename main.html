@@ -279,14 +279,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <div class="item" id="error" style="display:none;">
                     <div class="card">
-                        <div class="text">Geen verbinding. Zet de internetverbinding aan en start de app opnieuw.</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card">
-                        <div class="title">Katholieke Radio</div>
-                        <div class="text">Stem af op nederlandstalige, katholieke uitzendingen</div>
-                        <div class="caption"></div><!-- TODO -->
+                        <div class="title">Geen verbinding. Zet de internetverbinding aan en start de app opnieuw.</div>
                     </div>
                 </div>
             </div>
@@ -299,7 +292,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div><a class="link" href="https://plus.google.com/share?url=http://alledaags.gelovenleren.net">share on GOOGLE+</a></div><!-- TODO -->
         </footer>
         <script>
+            var isPhoneGapApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
             $(document).ready(function() {
+                if (isPhoneGapApp) $('footer').hide();
                 var $container = $('#container');
                 $container.imagesLoaded(function(){
                     $container.masonry({
@@ -316,23 +311,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     success: function(items) {
                         $('#loading').hide();
                         $container.prepend(items['html']);
+                        $container.masonry('reloadItems');
+                        $container.masonry('layout');
                         $container.imagesLoaded(function(){
-                            $container.masonry('reloadItems');
                             $container.masonry('layout');
                         });
                     },
                     error: function() {
+                        $('#loading').hide();
                         $('#error').show();
+                        $container.masonry('reloadItems');
+                        $container.masonry('layout');
                     },
                     timeout: 5000
-                });
-                // using inappbrowser plugin to open external links in system browser
-                $(document).on('click', 'a', function (event) {
-                    if (!$(this).hasClass('radio')) {
-                        event.preventDefault();
-                        window.open($(this).attr('href'), '_system');
-                        return false;
-                    }
                 });
             });
         </script>
