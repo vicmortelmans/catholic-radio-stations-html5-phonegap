@@ -279,7 +279,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <div class="item" id="error" style="display:none;">
                     <div class="card">
-                        <div class="title">Geen verbinding. Zet de internetverbinding aan en start de app opnieuw.</div>
+                        <div class="title">Geen verbinding. Zet de internetverbinding aan en probeer opnieuw.</div>
+                    </div>
+                    <div class="card" id="retry">
+                        <div class="title">PROBEER OPNIEUW</div>
                     </div>
                 </div>
             </div>
@@ -294,6 +297,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script>
             var isPhoneGapApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
             $(document).ready(function() {
+                function connect() {
+                  $('#error').hide();
+                  $('#loading').show();
+                  $container.masonry('layout');
+                  $.ajax({
+                      url: 'http://catecheserooster.appspot.com/radio', // for production
+                      //url: 'http://127.0.0.1:8080/radio', // for debugging
+                      dataType: 'jsonp',
+                      success: function(items) {
+                          $('#loading').hide();
+                          $container.prepend(items['html']);
+                          $container.masonry('reloadItems');
+                          $container.masonry('layout');
+                          $container.imagesLoaded(function(){
+                              $container.masonry('layout');
+                          });
+                      },
+                      error: function() {
+                          $('#loading').hide();
+                          $('#error').show();
+                          $container.masonry('reloadItems');
+                          $container.masonry('layout');
+                      },
+                      timeout: 5000
+                  });
+                }
                 if (isPhoneGapApp) $('footer').hide();
                 var $container = $('#container');
                 $container.imagesLoaded(function(){
@@ -303,28 +332,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         gutter: 8
                     });
                 });
-                $('#loading').show();
-                $.ajax({
-                    url: 'http://catecheserooster.appspot.com/radio', // for production
-                    //url: 'http://127.0.0.1:8080/radio', // for debugging
-                    dataType: 'jsonp',
-                    success: function(items) {
-                        $('#loading').hide();
-                        $container.prepend(items['html']);
-                        $container.masonry('reloadItems');
-                        $container.masonry('layout');
-                        $container.imagesLoaded(function(){
-                            $container.masonry('layout');
-                        });
-                    },
-                    error: function() {
-                        $('#loading').hide();
-                        $('#error').show();
-                        $container.masonry('reloadItems');
-                        $container.masonry('layout');
-                    },
-                    timeout: 5000
-                });
+                connect();
+                $('#retry').on('click', connect);
             });
         </script>
     </body>
