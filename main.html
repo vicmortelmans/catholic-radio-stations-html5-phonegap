@@ -37,6 +37,7 @@
             background-image: url(pink-and-white.jpg);
             background-position: center;
             background-size: cover;
+            background-attachment: fixed;
             font: 14pt "Roboto", sans-serif;
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
@@ -306,8 +307,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   $('#loading').show();
                   $container.masonry('layout');
                   $.ajax({
-                      //url: 'http://catecheserooster.appspot.com/radio', // for production
-                      url: 'http://127.0.0.1:8080/radio', // for debugging
+                      url: 'http://catecheserooster.appspot.com/radio', // for production
+                      //url: 'http://127.0.0.1:8080/radio', // for debugging
                       dataType: 'jsonp',
                       success: function(items) {
                           $('#loading').hide();
